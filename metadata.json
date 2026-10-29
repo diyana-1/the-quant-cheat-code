@@ -1,0 +1,6 @@
+{
+  "name": "The Quant Cheat Code: Simulating Markets",
+  "description": "An interactive, visual guide to university-level financial mathematics, Wiener processes, Geometric Brownian Motion, and Monte Carlo market simulations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
