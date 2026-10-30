@@ -358,12 +358,63 @@
 
       .katex {
         font-size: 1.12em !important;
+        text-transform: none !important; /* Never capslock math variables */
       }
       .katex-display {
         margin: 0.75rem 0 !important;
         overflow-x: auto;
         overflow-y: hidden;
         padding-bottom: 2px;
+      }
+
+      /* ========================================================================= */
+      /* TYPOGRAPHY: BASE 14px FOR DESCRIPTIONS & MATH EXPLANATIONS                */
+      /* MAINTAINS 12px FOR BADGES, PILLS, META COUNTERS & LABELS                 */
+      /* ========================================================================= */
+      
+      /* Base font size of 14px for all descriptive text, paragraphs & math explanations */
+      p,
+      .desc-text,
+      .math-explanation,
+      .zen-panel p,
+      .zen-card p,
+      p.text-xs,
+      p.text-\[12px\],
+      p.text-\[13px\],
+      li,
+      blockquote {
+        font-size: 14px !important;
+        line-height: 1.62 !important;
+      }
+
+      /* Maintain crisp 12px for badges, pills, step tags, meta counters & compact labels */
+      .badge,
+      .badge-text,
+      .tag-label,
+      .pill,
+      span.text-xs,
+      button.text-xs,
+      label.text-xs,
+      .font-mono.text-xs,
+      [class*="rounded-full"].text-xs,
+      [class*="rounded-md"].text-xs,
+      [class*="rounded-lg"].text-xs,
+      [class*="rounded-xl"].text-xs,
+      .text-\[10px\],
+      .text-\[11px\],
+      nav span,
+      nav button,
+      small {
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+      }
+
+      /* Enhanced contrast for subtext and descriptions */
+      .text-slate-400 {
+        color: #64748b;
+      }
+      body.dark-mode .text-slate-400 {
+        color: #cbd5e1 !important;
       }
 
       /* Grand Trophy Glow */
@@ -415,7 +466,7 @@
           <div>
             <div class="flex items-center space-x-2">
               <span class="font-extrabold tracking-tight text-slate-900 sm:text-lg">The Quant Cheat Code</span>
-              <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-full">
+              <span class="hidden sm:inline-block px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-full">
                 6-Stage Journey
               </span>
             </div>
@@ -475,7 +526,7 @@
 
           <button onclick="switchTab('practice')" class="px-3 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-xs hover:opacity-95 active:scale-[0.98] transition-all flex items-center gap-1">
             <span>🏆 Trophy Hub</span>
-            <span id="nav-trophy-counter" class="ml-1 px-1.5 py-0.2 bg-white/25 rounded-md text-[10px]">0/12</span>
+            <span id="nav-trophy-counter" class="ml-1 px-1.5 py-0.2 bg-white/25 rounded-md text-xs">0/12</span>
           </button>
         </div>
       </div>
@@ -511,7 +562,7 @@
                 </div>
               </div>
               <div class="space-y-1">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
                   <span>Take a Gentle Breath (4s in &bull; 4s out)</span>
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-slate-900">Feeling Overwhelmed by Stochastic Calculus?</h3>
@@ -575,39 +626,39 @@
             Forget abstract jargon like "stochastic perturbations" or "white noise". Every single model in Hull Chapter 14 simply combines three everyday real-world questions:
           </p>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <!-- Part 1: Drift -->
-            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2">
+            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 font-bold font-mono text-[11px]">1. The Expected Trend ($a \, dt$)</span>
-                <span class="text-lg">📈</span>
+                <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold font-mono text-xs">1. The Expected Trend ($a \, dt$)</span>
+                <span class="text-xl">📈</span>
               </div>
-              <h4 class="font-bold text-slate-900 text-sm">Where is it naturally heading?</h4>
-              <p class="text-slate-600 leading-relaxed text-xs">
+              <h4 class="font-bold text-slate-900 text-base">Where is it naturally heading?</h4>
+              <p class="text-slate-600 leading-relaxed text-sm">
                 The predictable baseline growth over time (like steady interest in a savings account or a company's average annual growth). If zero unexpected news broke today, the price would simply glide along this steady trend.
               </p>
             </div>
 
             <!-- Part 2: Random Shock dz -->
-            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2">
+            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="px-2 py-0.5 rounded-md bg-sky-100 text-sky-900 font-bold font-mono text-[11px]">2. Breaking News Shock ($dz$)</span>
-                <span class="text-lg">⚡</span>
+                <span class="px-2.5 py-1 rounded-md bg-sky-100 text-sky-900 font-bold font-mono text-xs">2. Breaking News Shock ($dz$)</span>
+                <span class="text-xl">⚡</span>
               </div>
-              <h4 class="font-bold text-slate-900 text-sm">What unexpected news just hit?</h4>
-              <p class="text-slate-600 leading-relaxed text-xs">
+              <h4 class="font-bold text-slate-900 text-base">What unexpected news just hit?</h4>
+              <p class="text-slate-600 leading-relaxed text-sm">
                 Surprise real-world events that hit the wire right now (e.g. an unexpected earnings surprise or sudden rate cut). It is a fair random shock with zero expectation: half the news is good ($+dz$), half is bad ($-dz$).
               </p>
             </div>
 
             <!-- Part 3: Volatility b -->
-            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2">
+            <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-2xs space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-900 font-bold font-mono text-[11px]">3. Shock Sensitivity ($b$)</span>
-                <span class="text-lg">💥</span>
+                <span class="px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-900 font-bold font-mono text-xs">3. Shock Sensitivity ($b$)</span>
+                <span class="text-xl">💥</span>
               </div>
-              <h4 class="font-bold text-slate-900 text-sm">How hard does the price react?</h4>
-              <p class="text-slate-600 leading-relaxed text-xs">
+              <h4 class="font-bold text-slate-900 text-base">How hard does the price react?</h4>
+              <p class="text-slate-600 leading-relaxed text-sm">
                 How violently the price jumps in response to the news shock. A sleepy utility stock barely moves when news breaks ($b$ is small); an unpredictable tech stock jumps dramatically ($b$ is large).
               </p>
             </div>
@@ -638,7 +689,7 @@
                 <!-- Front -->
                 <div class="flip-card-front zen-card p-6 flex flex-col justify-between border-t-4 border-t-rose-400">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[11px] font-bold">MYTH 1</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">MYTH 1</span>
                     <h4 class="text-base font-bold text-slate-900">"You need a pure math degree to understand Itô's Lemma."</h4>
                   </div>
                   <div class="text-xs text-slate-400 flex items-center justify-between border-t border-slate-100 pt-3">
@@ -649,13 +700,13 @@
                 <!-- Back -->
                 <div class="flip-card-back zen-card p-6 flex flex-col justify-between bg-emerald-50/90 border border-emerald-300">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">FACT 1</span>
-                    <h4 class="text-sm font-bold text-emerald-950">It's just Taylor series expansion with a random bounce!</h4>
-                    <p class="text-xs text-emerald-900 leading-relaxed">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">FACT 1</span>
+                    <h4 class="text-base font-bold text-emerald-950">It's just Taylor series expansion with a random bounce!</h4>
+                    <p class="text-sm text-emerald-900 leading-relaxed">
                       Standard calculus ignores $(dt)^2 = 0$. In stochastic calculus, $(dz)^2 = dt$, which gives a tiny extra $\frac{1}{2} \sigma^2$ curvature boost. That's all it is!
                     </p>
                   </div>
-                  <div class="text-[11px] text-emerald-700 font-bold">Tap to flip back ↺</div>
+                  <div class="text-xs text-emerald-700 font-bold">Tap to flip back ↺</div>
                 </div>
               </div>
             </div>
@@ -666,7 +717,7 @@
                 <!-- Front -->
                 <div class="flip-card-front zen-card p-6 flex flex-col justify-between border-t-4 border-t-amber-400">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">MYTH 2</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">MYTH 2</span>
                     <h4 class="text-base font-bold text-slate-900">"In $dx = a dt + b dz$, $b$ is the variance rate."</h4>
                   </div>
                   <div class="text-xs text-slate-400 flex items-center justify-between border-t border-slate-100 pt-3">
@@ -677,13 +728,13 @@
                 <!-- Back -->
                 <div class="flip-card-back zen-card p-6 flex flex-col justify-between bg-sky-50/90 border border-sky-300">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold">FACT 2</span>
-                    <h4 class="text-sm font-bold text-sky-950">Crucial exam trap: $b$ is the standard deviation!</h4>
-                    <p class="text-xs text-sky-900 leading-relaxed">
+                    <span class="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">FACT 2</span>
+                    <h4 class="text-base font-bold text-sky-950">Crucial exam trap: $b$ is the standard deviation!</h4>
+                    <p class="text-sm text-sky-900 leading-relaxed">
                       Parameter $b$ is the shock jump multiplier (standard deviation). The variance rate per unit time is $b^2$. If $b = 3$, the variance rate is $9$!
                     </p>
                   </div>
-                  <div class="text-[11px] text-sky-700 font-bold">Tap to flip back ↺</div>
+                  <div class="text-xs text-sky-700 font-bold">Tap to flip back ↺</div>
                 </div>
               </div>
             </div>
@@ -694,7 +745,7 @@
                 <!-- Front -->
                 <div class="flip-card-front zen-card p-6 flex flex-col justify-between border-t-4 border-t-indigo-400">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-[11px] font-bold">MYTH 3</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">MYTH 3</span>
                     <h4 class="text-base font-bold text-slate-900">"Stock prices can follow a Generalized Wiener process."</h4>
                   </div>
                   <div class="text-xs text-slate-400 flex items-center justify-between border-t border-slate-100 pt-3">
@@ -705,13 +756,13 @@
                 <!-- Back -->
                 <div class="flip-card-back zen-card p-6 flex flex-col justify-between bg-indigo-50/90 border border-indigo-300">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-[11px] font-bold">FACT 3</span>
-                    <h4 class="text-sm font-bold text-indigo-950">Stocks require percentage returns & cannot go below $0!</h4>
-                    <p class="text-xs text-indigo-900 leading-relaxed">
-                      A simple Wiener process can drop to $-\$500$. In reality, shareholders have limited liability, so we scale by $S$ (GBM) to guarantee $S > 0$.
+                    <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-bold">FACT 3</span>
+                    <h4 class="text-base font-bold text-indigo-950">Stocks require percentage returns & cannot go below <span class="katex-ignore">$</span>0!</h4>
+                    <p class="text-sm text-indigo-900 leading-relaxed">
+                      A simple Wiener process can drop to -<span class="katex-ignore">$</span>500. In reality, shareholders have limited liability, so we scale by $S$ (GBM) to guarantee $S > 0$.
                     </p>
                   </div>
-                  <div class="text-[11px] text-indigo-700 font-bold">Tap to flip back ↺</div>
+                  <div class="text-xs text-indigo-700 font-bold">Tap to flip back ↺</div>
                 </div>
               </div>
             </div>
@@ -722,7 +773,7 @@
                 <!-- Front -->
                 <div class="flip-card-front zen-card p-6 flex flex-col justify-between border-t-4 border-t-emerald-400">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">MYTH 4</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">MYTH 4</span>
                     <h4 class="text-base font-bold text-slate-900">"Monte Carlo predicts the exact price of a stock."</h4>
                   </div>
                   <div class="text-xs text-slate-400 flex items-center justify-between border-t border-slate-100 pt-3">
@@ -733,13 +784,13 @@
                 <!-- Back -->
                 <div class="flip-card-back zen-card p-6 flex flex-col justify-between bg-amber-50/90 border border-amber-300">
                   <div class="space-y-2">
-                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">FACT 4</span>
-                    <h4 class="text-sm font-bold text-amber-950">It predicts the probability distribution of outcomes!</h4>
-                    <p class="text-xs text-amber-900 leading-relaxed">
+                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">FACT 4</span>
+                    <h4 class="text-base font-bold text-amber-950">It predicts the probability distribution of outcomes!</h4>
+                    <p class="text-sm text-amber-900 leading-relaxed">
                       Nobody can predict a single path. By simulating 100 paths, we uncover the distribution to price financial options and measure risk.
                     </p>
                   </div>
-                  <div class="text-[11px] text-amber-700 font-bold">Tap to flip back ↺</div>
+                  <div class="text-xs text-amber-700 font-bold">Tap to flip back ↺</div>
                 </div>
               </div>
             </div>
@@ -777,8 +828,8 @@
                 </div>
 
                 <!-- Formula Flow Strip -->
-                <div class="p-3 rounded-2xl bg-sky-50/60 border border-sky-200/80 text-[11px] space-y-1.5">
-                  <div class="flex items-center gap-1 font-bold text-sky-800 font-mono uppercase text-[10px] tracking-wider">
+                <div class="p-3 rounded-2xl bg-sky-50/60 border border-sky-200/80 text-xs space-y-1.5">
+                  <div class="flex items-center gap-1 font-bold text-sky-800 font-mono uppercase text-xs tracking-wider">
                     <span>🔗 Formula Flow</span>
                   </div>
                   <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 text-slate-700 leading-snug">
@@ -790,19 +841,19 @@
                   </div>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                   The steady expected trend ($a \, dt$) plus unexpected market news shocks ($b \, dz$). Drift $a$ is the predictable trend rate; $b$ is how violently the price jumps when random news hits.
                 </p>
               </div>
 
               <div class="space-y-2 pt-2">
-                <div class="flex justify-between items-center text-[11px] text-slate-500 font-mono">
+                <div class="flex justify-between items-center text-xs text-slate-500 font-mono">
                   <span>LIVE ANIMATION: Drift Line + Stochastic Path</span>
                   <button onclick="restartMiniAnim('wiener')" class="text-sky-600 font-bold hover:underline">↺ Re-seed</button>
                 </div>
                 <div class="w-full h-44 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 shadow-inner">
                   <canvas id="mini-canvas-wiener" class="w-full h-full block"></canvas>
-                  <div class="absolute bottom-2 left-3 text-[10px] text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
+                  <div class="absolute bottom-2 left-3 text-xs text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
                     <span class="text-amber-400">--- Drift ($a \cdot t$)</span> &bull; <span class="text-emerald-400">&mdash; Path ($dx$)</span>
                   </div>
                 </div>
@@ -822,8 +873,8 @@
                 </div>
 
                 <!-- Formula Flow Strip -->
-                <div class="p-3 rounded-2xl bg-indigo-50/60 border border-indigo-200/80 text-[11px] space-y-1.5">
-                  <div class="flex items-center gap-1 font-bold text-indigo-800 font-mono uppercase text-[10px] tracking-wider">
+                <div class="p-3 rounded-2xl bg-indigo-50/60 border border-indigo-200/80 text-xs space-y-1.5">
+                  <div class="flex items-center gap-1 font-bold text-indigo-800 font-mono uppercase text-xs tracking-wider">
                     <span>🔗 Formula Flow</span>
                   </div>
                   <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 text-slate-700 leading-snug">
@@ -835,19 +886,19 @@
                   </div>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                   Real markets aren't rigid constants. In an Itô process, the expected trend $a(x, t)$ and news shock sensitivity $b(x, t)$ adapt dynamically as price $x$ and time $t$ shift.
                 </p>
               </div>
 
               <div class="space-y-2 pt-2">
-                <div class="flex justify-between items-center text-[11px] text-slate-500 font-mono">
+                <div class="flex justify-between items-center text-xs text-slate-500 font-mono">
                   <span>LIVE ANIMATION: Dynamic Adaptive Drift &amp; Volatility</span>
                   <button onclick="restartMiniAnim('ito')" class="text-indigo-600 font-bold hover:underline">↺ Re-seed</button>
                 </div>
                 <div class="w-full h-44 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 shadow-inner">
                   <canvas id="mini-canvas-ito" class="w-full h-full block"></canvas>
-                  <div class="absolute bottom-2 left-3 text-[10px] text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
+                  <div class="absolute bottom-2 left-3 text-xs text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
                     <span class="text-indigo-300">Quiet Zone &rarr; Stormy Zone (Adaptive $b(x,t)$)</span>
                   </div>
                 </div>
@@ -867,8 +918,8 @@
                 </div>
 
                 <!-- Formula Flow Strip -->
-                <div class="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 text-[11px] space-y-1.5">
-                  <div class="flex items-center gap-1 font-bold text-emerald-800 font-mono uppercase text-[10px] tracking-wider">
+                <div class="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 text-xs space-y-1.5">
+                  <div class="flex items-center gap-1 font-bold text-emerald-800 font-mono uppercase text-xs tracking-wider">
                     <span>🔗 Formula Flow</span>
                   </div>
                   <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 text-slate-700 leading-snug">
@@ -880,19 +931,19 @@
                   </div>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                   Both terms are multiplied by stock price $S$. High price means larger dollar swings; low price means smaller dollar swings, ensuring prices stay strictly positive ($S > 0$).
                 </p>
               </div>
 
               <div class="space-y-2 pt-2">
-                <div class="flex justify-between items-center text-[11px] text-slate-500 font-mono">
+                <div class="flex justify-between items-center text-xs text-slate-500 font-mono">
                   <span>LIVE ANIMATION: Proportional Shocks &amp; Protected Zero Floor</span>
                   <button onclick="restartMiniAnim('gbm')" class="text-emerald-600 font-bold hover:underline">↺ Re-seed</button>
                 </div>
                 <div class="w-full h-44 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 shadow-inner">
                   <canvas id="mini-canvas-gbm" class="w-full h-full block"></canvas>
-                  <div class="absolute bottom-2 left-3 text-[10px] text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
+                  <div class="absolute bottom-2 left-3 text-xs text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
                     <span class="text-rose-400 font-bold">--- Zero Floor ($S=0$)</span> &bull; <span class="text-emerald-400">Path bounces safely</span>
                   </div>
                 </div>
@@ -912,8 +963,8 @@
                 </div>
 
                 <!-- Formula Flow Strip -->
-                <div class="p-3 rounded-2xl bg-amber-50/60 border border-amber-200/80 text-[11px] space-y-1.5">
-                  <div class="flex items-center gap-1 font-bold text-amber-800 font-mono uppercase text-[10px] tracking-wider">
+                <div class="p-3 rounded-2xl bg-amber-50/60 border border-amber-200/80 text-xs space-y-1.5">
+                  <div class="flex items-center gap-1 font-bold text-amber-800 font-mono uppercase text-xs tracking-wider">
                     <span>🔗 Formula Flow</span>
                   </div>
                   <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 text-slate-700 leading-snug">
@@ -925,19 +976,19 @@
                   </div>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                   By repeatedly sampling random shocks $\epsilon \sim \mathcal{N}(0, 1)$, we simulate dozens of parallel trajectories, revealing the entire lognormal bell curve of possibilities.
                 </p>
               </div>
 
               <div class="space-y-2 pt-2">
-                <div class="flex justify-between items-center text-[11px] text-slate-500 font-mono">
+                <div class="flex justify-between items-center text-xs text-slate-500 font-mono">
                   <span>LIVE ANIMATION: Multi-Path Fan &amp; Terminal Distribution</span>
                   <button onclick="restartMiniAnim('mc')" class="text-amber-600 font-bold hover:underline">↺ Re-seed</button>
                 </div>
                 <div class="w-full h-44 bg-slate-900 rounded-2xl overflow-hidden relative border border-slate-800 shadow-inner">
                   <canvas id="mini-canvas-mc" class="w-full h-full block"></canvas>
-                  <div class="absolute bottom-2 left-3 text-[10px] text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
+                  <div class="absolute bottom-2 left-3 text-xs text-slate-400 font-mono bg-slate-950/70 px-2 py-0.5 rounded border border-slate-800">
                     <span class="text-teal-400">8 Paths</span> &bull; <span class="text-amber-400">Bell curve forms on right</span>
                   </div>
                 </div>
@@ -970,7 +1021,7 @@
             <div onclick="switchTab('wiener')" class="zen-card p-5 rounded-3xl border border-slate-200 hover:border-sky-400 cursor-pointer transition-all space-y-3 relative group">
               <div class="flex items-center justify-between">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 font-bold font-mono text-xs flex items-center justify-center">1</span>
-                <span class="text-[10px] font-bold text-sky-700 uppercase">Station 1</span>
+                <span class="text-xs font-bold text-sky-700 uppercase">Station 1</span>
               </div>
               <h4 class="font-bold text-slate-900 text-sm group-hover:text-sky-700 transition">Generalized Wiener</h4>
               <p class="text-xs text-slate-500 leading-relaxed">
@@ -985,7 +1036,7 @@
             <div onclick="switchTab('ito')" class="zen-card p-5 rounded-3xl border border-slate-200 hover:border-indigo-400 cursor-pointer transition-all space-y-3 relative group">
               <div class="flex items-center justify-between">
                 <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 font-bold font-mono text-xs flex items-center justify-center">2</span>
-                <span class="text-[10px] font-bold text-indigo-700 uppercase">Station 2</span>
+                <span class="text-xs font-bold text-indigo-700 uppercase">Station 2</span>
               </div>
               <h4 class="font-bold text-slate-900 text-sm group-hover:text-indigo-700 transition">The Itô Process</h4>
               <p class="text-xs text-slate-500 leading-relaxed">
@@ -1000,7 +1051,7 @@
             <div onclick="switchTab('gbm')" class="zen-card p-5 rounded-3xl border border-slate-200 hover:border-emerald-400 cursor-pointer transition-all space-y-3 relative group">
               <div class="flex items-center justify-between">
                 <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 font-bold font-mono text-xs flex items-center justify-center">3</span>
-                <span class="text-[10px] font-bold text-emerald-700 uppercase">Station 3</span>
+                <span class="text-xs font-bold text-emerald-700 uppercase">Station 3</span>
               </div>
               <h4 class="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition">GBM for Stocks</h4>
               <p class="text-xs text-slate-500 leading-relaxed">
@@ -1015,7 +1066,7 @@
             <div onclick="switchTab('simulator')" class="zen-card p-5 rounded-3xl border border-slate-200 hover:border-amber-400 cursor-pointer transition-all space-y-3 relative group">
               <div class="flex items-center justify-between">
                 <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-bold font-mono text-xs flex items-center justify-center">4</span>
-                <span class="text-[10px] font-bold text-amber-700 uppercase">Station 4</span>
+                <span class="text-xs font-bold text-amber-700 uppercase">Station 4</span>
               </div>
               <h4 class="font-bold text-slate-900 text-sm group-hover:text-amber-700 transition">Monte Carlo Lab</h4>
               <p class="text-xs text-slate-500 leading-relaxed">
@@ -1030,7 +1081,7 @@
             <div onclick="switchTab('practice')" class="zen-card p-5 rounded-3xl border-2 border-dashed border-amber-300 hover:border-amber-500 bg-amber-50/40 cursor-pointer transition-all space-y-3 relative group">
               <div class="flex items-center justify-between">
                 <span class="w-8 h-8 rounded-xl bg-amber-200 text-amber-900 font-bold text-sm flex items-center justify-center">🏆</span>
-                <span class="text-[10px] font-bold text-amber-800 uppercase">Goal</span>
+                <span class="text-xs font-bold text-amber-800 uppercase">Goal</span>
               </div>
               <h4 class="font-bold text-slate-900 text-sm group-hover:text-amber-700 transition">The Grand Trophy</h4>
               <p class="text-xs text-slate-600 leading-relaxed">
@@ -1086,7 +1137,7 @@
               </div>
               <div>
                 <div class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-800">Need a breath</div>
-                <div class="text-[11px] text-slate-500">Feeling a bit overwhelmed</div>
+                <div class="text-xs text-slate-500">Feeling a bit overwhelmed</div>
               </div>
             </button>
 
@@ -1101,7 +1152,7 @@
               </div>
               <div>
                 <div class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-800">Feeling confused</div>
-                <div class="text-[11px] text-slate-500">Formulas look tricky</div>
+                <div class="text-xs text-slate-500">Formulas look tricky</div>
               </div>
             </button>
 
@@ -1116,7 +1167,7 @@
               </div>
               <div>
                 <div class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-indigo-800">Ready to learn</div>
-                <div class="text-[11px] text-slate-500">Let's simulate markets!</div>
+                <div class="text-xs text-slate-500">Let's simulate markets!</div>
               </div>
             </button>
           </div>
@@ -1166,10 +1217,10 @@
             <div class="p-5 rounded-2xl bg-sky-50/50 border border-sky-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-sky-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-sky-600 text-white font-mono font-bold text-xs uppercase">
                     1. Formal Definition
                   </span>
-                  <span class="text-slate-400 font-mono text-[11px]">SDE Form</span>
+                  <span class="text-slate-400 font-mono text-xs">SDE Form</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">Constant Drift &amp; Variance Rate</h4>
                 <div class="p-3 bg-white rounded-xl border border-sky-200 text-center font-mono text-sky-950 font-bold text-base shadow-2xs">
@@ -1181,7 +1232,7 @@
                 <div class="p-2.5 bg-white rounded-lg border border-sky-100 text-center font-mono text-xs text-sky-900 font-semibold">
                   $$\Delta x \sim \mathcal{N}(aT, \; b^2 T)$$
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-xs text-slate-500 leading-relaxed">
                   Where $dz = \epsilon \sqrt{dt}$ is a standard Wiener increment with $\epsilon \sim \mathcal{N}(0, 1)$, $\mathbb{E}[\Delta z] = 0$, and $\text{Var}(\Delta z) = \Delta t$.
                 </p>
               </div>
@@ -1191,10 +1242,10 @@
             <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4">
               <div class="space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-[10px] uppercase tracking-wide">
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wide">
                     2. In Plain English
                   </span>
-                  <span class="text-slate-500 font-mono text-[11px] font-semibold">Core Intuition</span>
+                  <span class="text-slate-500 font-mono text-xs font-semibold">Core Intuition</span>
                 </div>
                 
                 <div>
@@ -1240,7 +1291,7 @@
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-xs text-slate-600 leading-relaxed">
                 💡 <strong>Gaussian Result:</strong> Because every tiny shock is drawn from a normal distribution, adding thousands of them creates a smooth Gaussian bell curve.
               </div>
             </div>
@@ -1249,29 +1300,29 @@
             <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-amber-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-amber-600 text-white font-mono font-bold text-xs uppercase">
                     3. Core Exam Takeaway
                   </span>
-                  <span class="text-amber-800 font-mono text-[11px] font-bold">Hull Exam Traps</span>
+                  <span class="text-amber-800 font-mono text-xs font-bold">Hull Exam Traps</span>
                 </div>
-                <h4 class="font-bold text-slate-900 text-sm">Overdrafts &amp; The $b$ vs $b^2$ Distinction</h4>
-                <div class="space-y-2 text-xs text-slate-700">
-                  <div class="p-2.5 rounded-lg bg-white border border-amber-200 space-y-1">
-                    <div class="font-bold text-amber-900">⚠️ Trap 1: $b$ is NOT the variance rate!</div>
-                    <p class="text-[11px] text-slate-600">
-                      In Hull's questions, if variance rate is $\$900\text{M}$, then $b^2 = 900 \implies b = \sqrt{900} = 30$. Never multiply $900 \times 1.96$!
+                <h4 class="font-bold text-slate-900 text-base">Overdrafts &amp; The $b$ vs $b^2$ Distinction</h4>
+                <div class="space-y-2 text-sm text-slate-700">
+                  <div class="p-3 rounded-lg bg-white border border-amber-200 space-y-1">
+                    <div class="font-bold text-amber-900 text-sm">⚠️ Trap 1: $b$ is NOT the variance rate!</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                      In Hull's questions, if variance rate is <span class="katex-ignore">$</span>900M, then $b^2 = 900 \implies b = \sqrt{900} = 30$. Never multiply $900 \times 1.96$!
                     </p>
                   </div>
-                  <div class="p-2.5 rounded-lg bg-white border border-amber-200 space-y-1">
-                    <div class="font-bold text-amber-900">🎯 Formula: 95% Confidence Bounds</div>
-                    <p class="text-[11px] font-mono text-slate-700">
+                  <div class="p-3 rounded-lg bg-white border border-amber-200 space-y-1">
+                    <div class="font-bold text-amber-900 text-sm">🎯 Formula: 95% Confidence Bounds</div>
+                    <p class="text-sm font-mono text-slate-700">
                       $$(x_0 + aT) \pm 1.96 \, b\sqrt{T}$$
                     </p>
                   </div>
-                  <div class="p-2.5 rounded-lg bg-white border border-amber-200 space-y-1">
-                    <div class="font-bold text-amber-900">💡 Why it fails for stocks:</div>
-                    <p class="text-[11px] text-slate-600">
-                      In Hull Example 14.1, cash bounds are $[-\$38.8\text{M}, +\$78.8\text{M}]$. Cash accounts can drop into negative overdraft loans, but stock prices cannot breach zero ($S \gt 0$) due to limited liability!
+                  <div class="p-3 rounded-lg bg-white border border-amber-200 space-y-1">
+                    <div class="font-bold text-amber-900 text-sm">💡 Why it fails for stocks:</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                      In Hull Example 14.1, cash bounds are [-<span class="katex-ignore">$</span>38.8M, +<span class="katex-ignore">$</span>78.8M]. Cash accounts can drop into negative overdraft loans, but stock prices cannot breach zero ($S \gt 0$) due to limited liability!
                     </p>
                   </div>
                 </div>
@@ -1289,7 +1340,7 @@
               <span class="text-base">🧱</span>
               <h4 class="text-sm font-bold text-slate-900">Foundational Warm-Up: The Standard Wiener Process ($dz$)</h4>
             </div>
-            <span class="text-[11px] font-mono font-bold text-slate-500 bg-white px-2.5 py-0.5 rounded-full border border-slate-200 self-start sm:self-auto">
+            <span class="text-xs font-mono font-bold text-slate-500 bg-white px-2.5 py-0.5 rounded-full border border-slate-200 self-start sm:self-auto">
               Hull Section 14.1 Foundation
             </span>
           </div>
@@ -1325,7 +1376,7 @@
           
           <!-- Formula 1: Continuous SDE -->
           <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl text-center font-mono space-y-2">
-            <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold font-sans block">Continuous Differential Equation</span>
+            <span class="text-xs text-slate-500 uppercase tracking-widest font-bold font-sans block">Continuous Differential Equation</span>
             <div class="text-2xl sm:text-3xl text-sky-900 font-bold">
               $$dx = a \, dt + b \, dz$$
             </div>
@@ -1342,7 +1393,7 @@
             <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
               <div class="flex items-center justify-between">
                 <h4 class="font-bold text-slate-900 text-base">Market Shock Response: $b \, dz$</h4>
-                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-[10px]">⚠️ Exam Trap: $b$ is NOT variance!</span>
+                <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-xs">⚠️ Exam Trap: $b$ is NOT variance!</span>
               </div>
               <p class="text-slate-600 leading-relaxed text-xs sm:text-sm">
                 In $b \, dz$, <strong class="text-slate-900">$dz$ is the raw random news shock</strong> (today's unpredictable market surprise), while <strong class="text-slate-900">$b$ is the volatility / shock sensitivity (standard deviation rate)</strong> that decides how violently the asset swings. The <strong class="text-amber-800 font-bold">variance rate is $b^2$</strong>, not $b$! (For example, if $b = 3$, the variance rate per year is $3^2 = 9$).
@@ -1356,7 +1407,7 @@
               <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-800 font-mono">
                 <span>🔗 Continuous Calculus &rarr; Discrete Simulation Step</span>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-700">Coding Formula</span>
+              <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-700">Coding Formula</span>
             </div>
 
             <div class="p-4 bg-white rounded-xl border border-sky-200 text-center font-mono">
@@ -1367,17 +1418,17 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 1: Continuous SDE</span>
+                <span class="text-slate-400 font-bold uppercase block text-xs font-mono">Step 1: Continuous SDE</span>
                 <div class="font-bold text-slate-800">Differential $dx = a \, dt + b \, dz$</div>
                 <p class="text-slate-500">Continuous calculus describes infinitesimally tiny slices $dt$.</p>
               </div>
               <div class="p-3 bg-sky-100/70 rounded-xl border border-sky-300 space-y-1">
-                <span class="text-sky-800 font-bold uppercase block text-[10px] font-mono">Step 2: Discretization</span>
+                <span class="text-sky-800 font-bold uppercase block text-xs font-mono">Step 2: Discretization</span>
                 <div class="font-bold text-sky-950">Scale by $\sqrt{\Delta t}$ &amp; Draw $\epsilon$</div>
                 <p class="text-sky-900">Replace $dz$ with $\epsilon \sqrt{\Delta t}$ because variance scales linearly with time: $\text{Var}(\Delta z) = \Delta t$.</p>
               </div>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 3: Executable Code</span>
+                <span class="text-slate-400 font-bold uppercase block text-xs font-mono">Step 3: Executable Code</span>
                 <div class="font-bold text-slate-800">Simulation Loop</div>
                 <p class="text-slate-500">You can now code random market walks in Python, JavaScript, or Excel with exact physics.</p>
               </div>
@@ -1390,7 +1441,7 @@
               <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-800 font-mono">
                 <span>🔗 Expected Mean &amp; Variance &rarr; 95% Confidence Interval</span>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-700">Exam Formula</span>
+              <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-700">Exam Formula</span>
             </div>
 
             <div class="p-4 bg-white rounded-xl border border-indigo-200 text-center font-mono">
@@ -1399,23 +1450,23 @@
               </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-              <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 1: Distribution</span>
-                <div class="font-bold text-slate-800">Gaussian Additivity</div>
-                <p class="text-slate-500">The sum of independent normal increments is also normal with mean $a T$ and variance $b^2 T$.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+              <div class="p-4 bg-white rounded-xl border border-slate-200 space-y-1.5">
+                <span class="text-slate-500 font-bold uppercase block text-xs font-mono">Step 1: Distribution</span>
+                <div class="font-bold text-slate-800 text-base">Gaussian Additivity</div>
+                <p class="text-slate-600 text-sm leading-relaxed">The sum of independent normal increments is also normal with mean $a T$ and variance $b^2 T$.</p>
               </div>
-              <div class="p-3 bg-indigo-100/70 rounded-xl border border-indigo-300 space-y-1">
-                <span class="text-indigo-800 font-bold block text-[10px] font-mono">Step 2: The $1.96$ Normal Multiplier</span>
-                <div class="font-bold text-indigo-950">Standard Deviation $\times 1.96$</div>
-                <p class="text-indigo-900 leading-relaxed">
+              <div class="p-4 bg-indigo-100/70 rounded-xl border border-indigo-300 space-y-1.5">
+                <span class="text-indigo-800 font-bold block text-xs font-mono">Step 2: The $1.96$ Normal Multiplier</span>
+                <div class="font-bold text-indigo-950 text-base">95% Margin: $\pm 1.96 \times \text{Standard Deviation}$</div>
+                <p class="text-indigo-900 leading-relaxed text-sm">
                   In a normal bell curve, exactly <strong>95% of all outcomes</strong> fall within $\pm 1.96$ standard deviations of the mean ($z_{0.025} = 1.96$). Since the standard deviation is $\sqrt{b^2 T} = b\sqrt{T}$, <span class="katex-ignore">the 95% spread is</span> $1.96 \times b\sqrt{T}$.
                 </p>
               </div>
-              <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 3: Confidence Bounds</span>
-                <div class="font-bold text-slate-800">Instant Risk Bounds</div>
-                <p class="text-slate-500">Solve John Hull Chapter 14 cash forecasting exam problems in under 60 seconds.</p>
+              <div class="p-4 bg-white rounded-xl border border-slate-200 space-y-1.5">
+                <span class="text-slate-500 font-bold uppercase block text-xs font-mono">Step 3: Confidence Bounds</span>
+                <div class="font-bold text-slate-800 text-base">Instant Risk Bounds</div>
+                <p class="text-slate-600 text-sm leading-relaxed">Solve John Hull Chapter 14 cash forecasting exam problems in under 60 seconds.</p>
               </div>
             </div>
           </div>
@@ -1427,7 +1478,7 @@
         <div class="zen-panel p-6 sm:p-8 rounded-3xl space-y-6 border border-sky-200 bg-white shadow-xs">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
             <div>
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">
                 <span>🧪 Interactive Laboratory</span>
               </div>
               <h3 class="text-xl font-bold text-slate-900 mt-1">Live Parameter Sandbox: $dx = a \, dt + b \, dz$</h3>
@@ -1447,7 +1498,7 @@
                 <span id="wiener-val-a" class="font-mono font-bold text-sky-700 bg-white px-2 py-0.5 rounded border border-slate-200">+0.80</span>
               </div>
               <input type="range" id="wiener-slider-a" min="-2.0" max="3.0" step="0.1" value="0.8" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateWienerSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>-2.0 (Downward)</span>
                 <span>0.0</span>
                 <span>+3.0 (Upward)</span>
@@ -1461,7 +1512,7 @@
                 <span id="wiener-val-b" class="font-mono font-bold text-indigo-700 bg-white px-2 py-0.5 rounded border border-slate-200">1.20</span>
               </div>
               <input type="range" id="wiener-slider-b" min="0.2" max="3.0" step="0.1" value="1.2" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateWienerSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>0.2 (Calm)</span>
                 <span>1.5</span>
                 <span>3.0 (Wild)</span>
@@ -1475,7 +1526,7 @@
                 <span id="wiener-val-t" class="font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-slate-200">1.0 Year</span>
               </div>
               <input type="range" id="wiener-slider-t" min="0.5" max="3.0" step="0.5" value="1.0" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateWienerSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>0.5 yr (6 mo)</span>
                 <span>1.0 yr</span>
                 <span>3.0 yrs</span>
@@ -1486,7 +1537,7 @@
           <!-- Canvas Display -->
           <div class="relative w-full h-64 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-inner">
             <canvas id="canvas-wiener-lab" class="w-full h-full block"></canvas>
-            <div class="absolute top-3 left-3 flex flex-wrap items-center gap-2 text-[11px] font-mono bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-slate-300">
+            <div class="absolute top-3 left-3 flex flex-wrap items-center gap-2 text-xs font-mono bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-slate-300">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-0.5 bg-amber-400 inline-block"></span> Expected Drift ($x_0 + a t$)</span>
               <span class="text-slate-600">&bull;</span>
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-2 bg-sky-500/30 inline-block rounded-xs"></span> 95% Confidence Cone ($\pm 1.96 b\sqrt{t}$)</span>
@@ -1498,19 +1549,19 @@
           <!-- Live Dynamic Stats Strip -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-400 uppercase block font-sans font-bold">Expected Drift ($a T$)</span>
+              <span class="text-xs text-slate-400 block font-sans font-bold">Expected Drift ($a T$)</span>
               <span id="wiener-stat-mean" class="text-base font-bold text-amber-600">+0.80</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-400 uppercase block font-sans font-bold">Variance Rate ($b^2$)</span>
+              <span class="text-xs text-slate-400 block font-sans font-bold">Variance Rate ($b^2$)</span>
               <span id="wiener-stat-varrate" class="text-base font-bold text-indigo-600">1.44</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-400 uppercase block font-sans font-bold">Std Dev at $T$ ($b\sqrt{T}$)</span>
+              <span class="text-xs text-slate-400 block font-sans font-bold">Std Dev at $T$ ($b\sqrt{T}$)</span>
               <span id="wiener-stat-sd" class="text-base font-bold text-sky-600">1.20</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-400 uppercase block font-sans font-bold">95% Bounds at $T$</span>
+              <span class="text-xs text-slate-400 block font-sans font-bold">95% Bounds at $T$</span>
               <span id="wiener-stat-bounds" class="text-xs font-bold text-slate-700 leading-snug block mt-0.5">[-1.55, +3.15]</span>
             </div>
           </div>
@@ -1543,7 +1594,7 @@
 
             <!-- 1-Click Student Presets -->
             <div class="flex flex-wrap items-center gap-2">
-              <span class="text-[11px] font-bold text-slate-400 uppercase font-mono mr-1">Presets:</span>
+              <span class="text-xs font-bold text-slate-400 uppercase font-mono mr-1">Presets:</span>
               <button
                 onclick="loadCalcPreset('hull')"
                 class="px-3 py-1.5 rounded-xl bg-white hover:bg-sky-100/70 text-sky-900 border border-sky-300 text-xs font-bold transition shadow-2xs cursor-pointer flex items-center gap-1"
@@ -1575,14 +1626,14 @@
             <div class="lg:col-span-5 space-y-4 bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-2xs">
               <div class="flex items-center justify-between border-b border-slate-100 pb-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">Parameters &amp; Inputs</span>
-                <span class="text-[10px] text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md font-medium">Auto-calculates on change</span>
+                <span class="text-xs text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md font-medium">Auto-calculates on change</span>
               </div>
 
               <!-- Input 1: Starting Position x0 -->
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
                   <label for="calc-input-x0" class="font-bold text-slate-800">Starting Position $x_0$ ($M)</label>
-                  <span class="text-slate-400 text-[11px]">e.g. Initial balance</span>
+                  <span class="text-slate-400 text-xs">e.g. Initial balance</span>
                 </div>
                 <input
                   type="number"
@@ -1598,7 +1649,7 @@
               <div class="space-y-1">
                 <div class="flex justify-between items-center text-xs">
                   <label for="calc-input-a" class="font-bold text-slate-800">Drift Rate $a$ ($M / year)</label>
-                  <span class="text-slate-400 text-[11px]">Expected yearly trend</span>
+                  <span class="text-slate-400 text-xs">Expected yearly trend</span>
                 </div>
                 <input
                   type="number"
@@ -1614,7 +1665,7 @@
               <div class="space-y-2 pt-1 border-t border-slate-100">
                 <div class="flex items-center justify-between text-xs">
                   <span class="font-bold text-slate-800">Shock Scaling Mode</span>
-                  <div class="inline-flex rounded-lg p-0.5 bg-slate-100 border border-slate-200 text-[11px]">
+                  <div class="inline-flex rounded-lg p-0.5 bg-slate-100 border border-slate-200 text-xs">
                     <button
                       id="calc-mode-var-btn"
                       type="button"
@@ -1644,7 +1695,7 @@
                     oninput="recalcWienerEngine()"
                     class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-white"
                   />
-                  <div id="calc-vol-sync-hint" class="text-[11px] text-sky-700 bg-sky-50 p-2 rounded-lg font-medium">
+                  <div id="calc-vol-sync-hint" class="text-xs text-sky-700 bg-sky-50 p-2 rounded-lg font-medium">
                     💡 <strong>Hull Exam Sync:</strong> $b^2 = 900 \implies b = \sqrt{900} = 30\text{ per year}$
                   </div>
                 </div>
@@ -1690,7 +1741,7 @@
                     class="p-2 rounded-xl border border-slate-200 text-center font-bold text-slate-600 hover:border-sky-300 transition"
                   >
                     <div>90%</div>
-                    <div class="text-[10px] text-slate-400 font-normal">$z = 1.645$</div>
+                    <div class="text-xs text-slate-400 font-normal">$z = 1.645$</div>
                   </button>
                   <button
                     id="calc-conf-95"
@@ -1698,7 +1749,7 @@
                     class="p-2 rounded-xl border-2 border-sky-600 bg-sky-50 text-center font-bold text-sky-900 shadow-2xs"
                   >
                     <div>95% (Standard)</div>
-                    <div class="text-[10px] text-sky-700 font-normal">$z = 1.960$</div>
+                    <div class="text-xs text-sky-700 font-normal">$z = 1.960$</div>
                   </button>
                   <button
                     id="calc-conf-99"
@@ -1706,7 +1757,7 @@
                     class="p-2 rounded-xl border border-slate-200 text-center font-bold text-slate-600 hover:border-sky-300 transition"
                   >
                     <div>99%</div>
-                    <div class="text-[10px] text-slate-400 font-normal">$z = 2.576$</div>
+                    <div class="text-xs text-slate-400 font-normal">$z = 2.576$</div>
                   </button>
                 </div>
               </div>
@@ -1735,7 +1786,7 @@
                   </svg>
                   
                   <!-- Legend Overlay -->
-                  <div class="flex flex-wrap items-center justify-between gap-2 px-2 pt-1 text-[11px] text-slate-300 font-mono border-t border-slate-800">
+                  <div class="flex flex-wrap items-center justify-between gap-2 px-2 pt-1 text-xs text-slate-300 font-mono border-t border-slate-800">
                     <div class="flex items-center gap-1.5">
                       <span class="w-2.5 h-2.5 rounded-sm bg-sky-400/50 inline-block"></span>
                       <span id="calc-legend-conf-text">95% Confidence Shaded Area</span>
@@ -1755,35 +1806,35 @@
               <!-- 4 Step-by-Step Numerical Results Cards -->
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5 shadow-2xs">
-                  <span class="text-[10px] text-slate-400 uppercase font-mono font-bold block">1. Mean ($\mu$)</span>
-                  <div class="text-slate-500 text-[10px] font-mono">$x_0 + aT$</div>
+                  <span class="text-xs text-slate-400 font-mono font-bold block">1. Mean ($\mu$)</span>
+                  <div class="text-slate-500 text-xs font-mono">$x_0 + aT$</div>
                   <div id="calc-res-mean" class="text-base sm:text-lg font-black text-amber-600">+$20.00M</div>
                 </div>
 
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5 shadow-2xs">
-                  <span class="text-[10px] text-slate-400 uppercase font-mono font-bold block">2. Std Dev ($\sigma$)</span>
-                  <div class="text-slate-500 text-[10px] font-mono">$b\sqrt{T}$</div>
+                  <span class="text-xs text-slate-400 font-mono font-bold block">2. Std Dev ($\sigma$)</span>
+                  <div class="text-slate-500 text-xs font-mono">$b\sqrt{T}$</div>
                   <div id="calc-res-sd" class="text-base sm:text-lg font-black text-sky-600">30.00M</div>
                 </div>
 
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5 shadow-2xs">
-                  <span class="text-[10px] text-slate-400 uppercase font-mono font-bold block">3. Interval Range</span>
-                  <div class="text-slate-500 text-[10px] font-mono">$\mu \pm z\sigma$</div>
+                  <span class="text-xs text-slate-400 uppercase font-mono font-bold block">3. Interval Range</span>
+                  <div class="text-slate-500 text-xs font-mono">$\mu \pm z\sigma$</div>
                   <div id="calc-res-bounds" class="text-xs sm:text-sm font-black text-indigo-900 leading-tight">
                     [-38.80M, +78.80M]
                   </div>
                 </div>
 
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5 shadow-2xs">
-                  <span class="text-[10px] text-slate-400 uppercase font-mono font-bold block">4. Overdraft Risk</span>
-                  <div class="text-slate-500 text-[10px] font-mono">$P(X_T \lt 0)$</div>
+                  <span class="text-xs text-slate-400 uppercase font-mono font-bold block">4. Overdraft Risk</span>
+                  <div class="text-slate-500 text-xs font-mono">$P(X_T \lt 0)$</div>
                   <div id="calc-res-overdraft" class="text-base sm:text-lg font-black text-rose-600">25.25%</div>
                 </div>
               </div>
 
               <!-- Step-by-Step Derivation Formula String -->
               <div class="p-4 bg-sky-900 text-sky-100 rounded-2xl font-mono text-xs sm:text-sm space-y-1 shadow-2xs">
-                <div class="text-sky-300 font-bold uppercase text-[10px] tracking-widest">
+                <div class="text-sky-300 font-bold uppercase text-xs tracking-widest">
                   Live Calculation Steps
                 </div>
                 <div id="calc-step-derivation" class="leading-relaxed text-xs">
@@ -1801,35 +1852,35 @@
               <h4 class="text-base font-bold text-slate-900">Demystifying John Hull's Exam Terminology</h4>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="p-4 rounded-xl bg-sky-50/50 border border-sky-200 space-y-1.5">
-                <div class="flex items-center gap-1.5 font-bold text-slate-900">
+                <div class="flex items-center gap-1.5 font-bold text-slate-900 text-sm sm:text-base">
                   <span class="text-base">💵</span>
                   <span>1. What does "M" mean?</span>
                 </div>
-                <p class="text-slate-600 leading-relaxed">
-                  In John Hull's textbook, <strong class="text-slate-900">$M$ means Million Dollars</strong> ($\$1\text{M} = \$1,000,000$). The company starts with a cash balance in millions, so an expected drift of $\$20\text{M}$ means cash is growing by 20 million dollars per year.
+                <p class="text-slate-600 leading-relaxed text-sm">
+                  In John Hull's textbook, <strong class="text-slate-900">$M$ means Million Dollars</strong> (<span class="katex-ignore">$</span>1M = <span class="katex-ignore">$</span>1,000,000). The company starts with a cash balance in millions, so an expected drift of <span class="katex-ignore">$</span>20M means cash is growing by 20 million dollars per year.
                 </p>
               </div>
 
               <div class="p-4 rounded-xl bg-sky-50/50 border border-sky-200 space-y-1.5">
-                <div class="flex items-center gap-1.5 font-bold text-slate-900">
+                <div class="flex items-center gap-1.5 font-bold text-slate-900 text-sm sm:text-base">
                   <span class="text-base">🔔</span>
                   <span>2. Is this the Normal Distribution?</span>
                 </div>
-                <p class="text-slate-600 leading-relaxed">
+                <p class="text-slate-600 leading-relaxed text-sm">
                   <strong class="text-slate-900">Yes, exactly!</strong> Since every tiny shock $dz$ is drawn from a normal distribution, adding them up over time $T$ creates a perfect Gaussian bell curve:
                   $\Delta x \sim \mathcal{N}(aT, \; b^2 T)$. That is why we use the standard normal critical value $z = 1.96$ for the 95% confidence interval!
                 </p>
               </div>
 
               <div class="p-4 rounded-xl bg-sky-50/50 border border-sky-200 space-y-1.5">
-                <div class="flex items-center gap-1.5 font-bold text-slate-900">
+                <div class="flex items-center gap-1.5 font-bold text-slate-900 text-sm sm:text-base">
                   <span class="text-base">⚠️</span>
                   <span>3. Why can cash turn negative?</span>
                 </div>
-                <p class="text-slate-600 leading-relaxed">
-                  Because a normal distribution extends to $-\infty$, the lower bound is $-\$38.8\text{M}$. Bank accounts can enter negative balances (an overdraft loan). However, stock prices cannot go below zero, which is why stocks use Geometric Brownian Motion (Milestone 3) instead!
+                <p class="text-slate-600 leading-relaxed text-sm">
+                  Because a normal distribution extends to $-\infty$, the lower bound is -<span class="katex-ignore">$</span>38.8M. Bank accounts can enter negative balances (an overdraft loan). However, stock prices cannot go below zero, which is why stocks use Geometric Brownian Motion (Milestone 3) instead!
                 </p>
               </div>
             </div>
@@ -1844,7 +1895,7 @@
           <div class="flex items-center gap-2">
             <span class="text-2xl">⚠️</span>
             <div>
-              <span class="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
+              <span class="text-xs font-bold text-amber-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
               <h4 class="text-lg font-bold text-slate-900">John Hull Example 14.2: The Cash Position Trap</h4>
             </div>
           </div>
@@ -1936,10 +1987,10 @@
             <div class="p-5 rounded-2xl bg-indigo-50/50 border border-indigo-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-mono font-bold text-xs uppercase">
                     1. Formal Definition
                   </span>
-                  <span class="text-slate-400 font-mono text-[11px]">SDE Form</span>
+                  <span class="text-slate-400 font-mono text-xs">SDE Form</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">Adaptive Drift &amp; Variance Rates</h4>
                 <div class="p-3 bg-white rounded-xl border border-indigo-200 text-center font-mono text-indigo-950 font-bold text-base shadow-2xs">
@@ -1951,7 +2002,7 @@
                 <div class="p-2.5 bg-white rounded-lg border border-indigo-100 text-center font-mono text-xs text-indigo-900 font-semibold">
                   $$dz = \epsilon \sqrt{dt}, \quad \epsilon \sim \mathcal{N}(0, 1)$$
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-xs text-slate-500 leading-relaxed">
                   Unlike constant-coefficient Wiener processes, the parameters dynamically evolve as the state variable $x$ changes and the clock ticks forward.
                 </p>
               </div>
@@ -1961,45 +2012,45 @@
             <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4">
               <div class="space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-[10px] uppercase tracking-wide">
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wide">
                     2. In Plain English
                   </span>
-                  <span class="text-slate-500 font-mono text-[11px] font-semibold">Core Intuition</span>
+                  <span class="text-slate-500 font-mono text-xs font-semibold">Core Intuition</span>
                 </div>
                 
                 <div>
                   <h4 class="font-bold text-slate-900 text-sm sm:text-base">Why Fixed Dollar Steps Fail in Financial Markets</h4>
-                  <p class="text-slate-600 text-xs sm:text-[13px] leading-relaxed mt-1">
-                    A Generalized Wiener process forces constant dollar moves. But a $\$10$ penny stock and a $\$600,000$ Berkshire share cannot possibly fluctuate by the same dollar sum!
+                  <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                    A Generalized Wiener process forces constant dollar moves. But a <span class="katex-ignore">$</span>10 penny stock and a <span class="katex-ignore">$</span>600,000 Berkshire share cannot possibly fluctuate by the same dollar sum!
                   </p>
                 </div>
 
                 <div class="space-y-2.5 pt-1">
                   <!-- Term 1 -->
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                  <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
                     <div class="flex items-center gap-2">
                       <span class="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs flex items-center justify-center">📈</span>
-                      <span class="font-mono font-bold text-xs text-indigo-950">Drift Scales with Price: $a(S, t) = \mu S$</span>
+                      <span class="font-mono font-bold text-xs sm:text-sm text-indigo-950">Drift Scales with Price: $a(S, t) = \mu S$</span>
                     </div>
-                    <p class="text-xs sm:text-[12px] text-slate-600 leading-relaxed pl-8 katex-ignore">
+                    <p class="text-sm text-slate-600 leading-relaxed pl-8 katex-ignore">
                       A 10% expected return yields +$10 gain on a $100 stock, but +$20 on a $200 stock. Drift grows in proportion to asset size.
                     </p>
                   </div>
 
                   <!-- Term 2 -->
-                  <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                  <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
                     <div class="flex items-center gap-2">
                       <span class="w-6 h-6 rounded-lg bg-purple-100 text-purple-800 font-bold text-xs flex items-center justify-center">⚡</span>
-                      <span class="font-mono font-bold text-xs text-purple-950">Volatility Scales with Price: $b(S, t) = \sigma S$</span>
+                      <span class="font-mono font-bold text-xs sm:text-sm text-purple-950">Volatility Scales with Price: $b(S, t) = \sigma S$</span>
                     </div>
-                    <p class="text-xs sm:text-[12px] text-slate-600 leading-relaxed pl-8">
+                    <p class="text-sm text-slate-600 leading-relaxed pl-8">
                       Swings shrink naturally to fractions of a cent as price nears zero, preventing stock prices from crashing through the zero floor.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+              <div class="p-3 rounded-xl bg-slate-100/90 border border-slate-200 text-sm text-slate-600 leading-relaxed">
                 💡 <strong>Return Stabilization:</strong> Dividing both sides by $S$ gives stationary percentage returns: $\frac{\Delta S}{S} \sim \mathcal{N}(\mu \Delta t, \sigma^2 \Delta t)$.
               </div>
             </div>
@@ -2008,23 +2059,23 @@
             <div class="p-5 rounded-2xl bg-indigo-50/60 border border-indigo-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white font-mono font-bold text-xs uppercase">
                     3. Core Exam Takeaway
                   </span>
-                  <span class="text-indigo-800 font-mono text-[11px] font-bold">Hull Exam Focus</span>
+                  <span class="text-indigo-800 font-mono text-xs font-bold">Hull Exam Focus</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">The Foundation of Geometric Brownian Motion</h4>
                 <div class="space-y-2 text-xs text-slate-700">
                   <div class="p-2.5 rounded-lg bg-white border border-indigo-200 space-y-1">
                     <div class="font-bold text-indigo-950">🎯 John Hull's Exam Bridge:</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       In Section 14.3, John Hull sets $a(S,t) = \mu S$ and $b(S,t) = \sigma S$. This transforms the generic Itô process directly into <strong>Geometric Brownian Motion</strong>:
                       $$dS = \mu S\,dt + \sigma S\,dz$$
                     </p>
                   </div>
                   <div class="p-2.5 rounded-lg bg-white border border-indigo-200 space-y-1">
                     <div class="font-bold text-indigo-950">🛡️ Natural Zero Floor ($S \gt 0$):</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       Because volatility scales with $S$, as $S \to 0$, dollar volatility $\sigma S \to 0$. Stock prices naturally cannot cross zero into negative territory!
                     </p>
                   </div>
@@ -2048,7 +2099,7 @@
 
           <div class="overflow-x-auto">
             <table class="w-full text-xs text-left text-slate-600 border border-slate-200 rounded-xl overflow-hidden">
-              <thead class="bg-slate-50 text-[11px] uppercase font-mono font-bold text-slate-700 border-b border-slate-200">
+              <thead class="bg-slate-50 text-xs uppercase font-mono font-bold text-slate-700 border-b border-slate-200">
                 <tr>
                   <th class="p-3">Process</th>
                   <th class="p-3">Hull Section</th>
@@ -2109,19 +2160,19 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             <div class="p-3.5 bg-white rounded-xl border border-emerald-200 space-y-1">
-              <span class="text-emerald-700 font-bold uppercase text-[10px] font-mono">Step 1: Pick Stock Drift</span>
+              <span class="text-emerald-700 font-bold uppercase text-xs font-mono">Step 1: Pick Stock Drift</span>
               <div class="font-bold text-slate-900 text-sm">$a(S, t) = \mu S$</div>
               <p class="text-slate-500">Expected annual dollar return is proportional to stock price with expected return $\mu$.</p>
             </div>
 
             <div class="p-3.5 bg-white rounded-xl border border-emerald-200 space-y-1">
-              <span class="text-emerald-700 font-bold uppercase text-[10px] font-mono">Step 2: Pick Stock Volatility</span>
+              <span class="text-emerald-700 font-bold uppercase text-xs font-mono">Step 2: Pick Stock Volatility</span>
               <div class="font-bold text-slate-900 text-sm">$b(S, t) = \sigma S$</div>
               <p class="text-slate-500">Annual dollar volatility scales with stock price with volatility rate $\sigma$.</p>
             </div>
 
             <div class="p-3.5 bg-emerald-100/80 rounded-xl border border-emerald-300 space-y-1">
-              <span class="text-emerald-900 font-bold uppercase text-[10px] font-mono">Step 3: The Result</span>
+              <span class="text-emerald-900 font-bold uppercase text-xs font-mono">Step 3: The Result</span>
               <div class="font-bold text-emerald-950 text-sm">$$dS = \mu S \, dt + \sigma S \, dz$$</div>
               <p class="text-emerald-900">This is <strong>Geometric Brownian Motion (GBM)</strong> — explored fully in Station 4!</p>
             </div>
@@ -2136,7 +2187,7 @@
               <div>
                 <div class="flex items-center gap-2">
                   <h4 class="font-bold text-slate-900 text-base">Optional Preview: Looking Ahead to Itô's Lemma</h4>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200 font-mono">
+                  <span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200 font-mono">
                     Advanced / Optional
                   </span>
                 </div>
@@ -2154,45 +2205,45 @@
 
           <!-- Itô's Lemma Formula Box -->
           <div class="p-5 bg-white border border-indigo-200 rounded-2xl text-center font-mono space-y-2 shadow-2xs">
-            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold font-sans block">Itô's Lemma Formula for $G(x, t)$</span>
+            <span class="text-xs text-slate-400 tracking-widest font-bold font-sans block">Itô's Lemma Formula for $G(x, t)$</span>
             <div class="text-lg sm:text-xl text-indigo-950 font-bold">
               $$dG = \left( \frac{\partial G}{\partial x} a + \frac{\partial G}{\partial t} + \frac{1}{2} \frac{\partial^2 G}{\partial x^2} b^2 \right) dt + \frac{\partial G}{\partial x} b \, dz$$
             </div>
           </div>
 
           <!-- Where does (dz)^2 = dt come from? -->
-          <div class="p-5 rounded-2xl bg-white border border-indigo-200 space-y-3 shadow-2xs">
-            <div class="flex items-center gap-2 text-indigo-900 font-bold text-xs uppercase tracking-wider font-mono">
-              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[11px]">?</span>
-              <span>Where does $(dz)^2 = dt$ come from? (The Stochastic Multiplication Rule)</span>
+          <div class="p-5 rounded-2xl bg-white border border-indigo-200 space-y-3.5 shadow-2xs">
+            <div class="flex items-center gap-2 text-indigo-900 font-bold text-sm tracking-wide font-mono">
+              <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">?</span>
+              <span>Where does <span class="font-bold">$(dz)^2 = dt$</span> come from? (The Stochastic Multiplication Rule)</span>
             </div>
 
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <p class="text-sm text-slate-600 leading-relaxed">
               In normal calculus, squaring small changes gives $(dx)^2 \approx 0$. But in stochastic calculus, squaring noise produces <strong>real time ($dt$)</strong>! Here is the exact proof:
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase text-[10px] font-mono">Step 1: Shock Definition</span>
-                <div class="font-bold text-slate-800">$dz = \epsilon \sqrt{dt}$</div>
-                <p class="text-slate-500">Wiener increments are scaled by $\sqrt{dt}$, where $\epsilon \sim \mathcal{N}(0, 1)$ is standard normal.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <span class="text-slate-500 font-bold uppercase text-xs font-mono">Step 1: Shock Definition</span>
+                <div class="font-bold text-slate-800 text-sm sm:text-base">$dz = \epsilon \sqrt{dt}$</div>
+                <p class="text-slate-600 text-sm leading-relaxed">Wiener increments are scaled by $\sqrt{dt}$, where $\epsilon \sim \mathcal{N}(0, 1)$ is standard normal.</p>
               </div>
 
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase text-[10px] font-mono">Step 2: Square Both Sides</span>
-                <div class="font-bold text-slate-800">$(dz)^2 = \epsilon^2 dt$</div>
-                <p class="text-slate-500">Squaring $\epsilon\sqrt{dt}$ yields $\epsilon^2 (\sqrt{dt})^2 = \epsilon^2 dt$.</p>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                <span class="text-slate-500 font-bold uppercase text-xs font-mono">Step 2: Square Both Sides</span>
+                <div class="font-bold text-slate-800 text-sm sm:text-base">$(dz)^2 = \epsilon^2 dt$</div>
+                <p class="text-slate-600 text-sm leading-relaxed">Squaring $\epsilon\sqrt{dt}$ yields $\epsilon^2 (\sqrt{dt})^2 = \epsilon^2 dt$.</p>
               </div>
 
-              <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 space-y-1">
-                <span class="text-indigo-800 font-bold uppercase text-[10px] font-mono">Step 3: Average of $\epsilon^2$</span>
-                <div class="font-bold text-indigo-950">$\mathbb{E}[\epsilon^2] = 1 \implies (dz)^2 \to dt$</div>
-                <p class="text-indigo-900">Because $\epsilon$ has mean 0 and variance 1, $\mathbb{E}[\epsilon^2] = 1$. As $dt \to 0$, fluctuations vanish, leaving deterministically $(dz)^2 = dt$!</p>
+              <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-200 space-y-1.5">
+                <span class="text-indigo-800 font-bold text-xs font-mono">Step 3: Average of $\epsilon^2$</span>
+                <div class="font-bold text-indigo-950 text-sm sm:text-base">$\mathbb{E}[\epsilon^2] = 1 \implies (dz)^2 \to dt$</div>
+                <p class="text-indigo-900 text-sm leading-relaxed">Because $\epsilon$ has mean 0 and variance 1, $\mathbb{E}[\epsilon^2] = 1$. As $dt \to 0$, fluctuations vanish, leaving deterministically <span class="font-semibold">$(dz)^2 = dt$</span>!</p>
               </div>
             </div>
 
             <!-- Stochastic Multiplication Rules -->
-            <div class="p-3 rounded-xl bg-slate-900 text-slate-200 text-xs font-mono flex flex-wrap items-center justify-around gap-3 text-center">
+            <div class="p-3.5 rounded-xl bg-slate-900 text-slate-200 text-sm font-mono flex flex-wrap items-center justify-around gap-3 text-center">
               <div><span class="text-indigo-400 font-bold">$(dz)^2 = dt$</span> (Survives!)</div>
               <div class="text-slate-500">&bull;</div>
               <div><span class="text-slate-400">$dt \cdot dz = 0$</span> (Vanishes)</div>
@@ -2207,7 +2258,7 @@
           <div class="flex items-center gap-2">
             <span class="text-2xl">⚠️</span>
             <div>
-              <span class="text-[11px] font-bold text-indigo-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
+              <span class="text-xs font-bold text-indigo-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
               <h4 class="text-lg font-bold text-slate-900">The Straight-Line Payoff Trap</h4>
             </div>
           </div>
@@ -2299,10 +2350,10 @@
             <div class="p-5 rounded-2xl bg-emerald-50/50 border border-emerald-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white font-mono font-bold text-xs uppercase">
                     1. Formal Definition
                   </span>
-                  <span class="text-slate-400 font-mono text-[11px]">SDE &amp; Closed Form</span>
+                  <span class="text-slate-400 font-mono text-xs">SDE &amp; Closed Form</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">Percentage Returns &amp; Lognormal Stock Prices</h4>
                 <div class="p-3 bg-white rounded-xl border border-emerald-200 text-center font-mono text-emerald-950 font-bold text-sm sm:text-base shadow-2xs">
@@ -2320,7 +2371,7 @@
                 <div class="p-2 bg-white rounded-lg border border-emerald-100 text-center font-mono text-xs text-emerald-900 font-semibold">
                   $$S(T) = S_0 \exp\left( \left(\mu - \frac{1}{2}\sigma^2\right)T + \sigma\sqrt{T}Z \right)$$
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-xs text-slate-500 leading-relaxed">
                   Where $Z \sim \mathcal{N}(0, 1)$, proving future stock prices are lognormally distributed with strictly positive support ($S(T) \gt 0$).
                 </p>
               </div>
@@ -2330,10 +2381,10 @@
             <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4">
               <div class="space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-[10px] uppercase tracking-wide">
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wide">
                     2. In Plain English
                   </span>
-                  <span class="text-slate-500 font-mono text-[11px] font-semibold">Core Intuition</span>
+                  <span class="text-slate-500 font-mono text-xs font-semibold">Core Intuition</span>
                 </div>
                 
                 <div>
@@ -2368,7 +2419,7 @@
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-xs text-slate-600 leading-relaxed">
                 💡 <strong>Corporate Law Harmony:</strong> Stockholders cannot lose more than 100% of their investment, mathematically fulfilling limited liability.
               </div>
             </div>
@@ -2377,22 +2428,22 @@
             <div class="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white font-mono font-bold text-xs uppercase">
                     3. Core Exam Takeaway
                   </span>
-                  <span class="text-emerald-800 font-mono text-[11px] font-bold">Hull Exam Trap</span>
+                  <span class="text-emerald-800 font-mono text-xs font-bold">Hull Exam Trap</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">The Itô Volatility Drag ($-\frac{1}{2}\sigma^2$)</h4>
                 <div class="space-y-2 text-xs text-slate-700">
                   <div class="p-2.5 rounded-lg bg-white border border-emerald-200 space-y-1">
                     <div class="font-bold text-emerald-950">⚠️ Expected Mean vs Typical Median:</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       While the theoretical mean stock price is $\mathbb{E}[S_T] = S_0 e^{\mu T}$, the median (typical path) grows at only $(\mu - \frac{1}{2}\sigma^2)T$!
                     </p>
                   </div>
                   <div class="p-2.5 rounded-lg bg-white border border-emerald-200 space-y-1">
                     <div class="font-bold text-emerald-950">💡 Why Compounding Volatility Drags Down Wealth:</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       If you gain $+30\%$ then lose $-30\%$, you do not break even! You end at $1.30 \times 0.70 = 0.91$ (a $9\%$ net loss). Volatility drag is real and must be accounted for in options pricing.
                     </p>
                   </div>
@@ -2409,17 +2460,17 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
             <div class="p-4 rounded-2xl bg-white border border-slate-200 space-y-1">
-              <span class="text-slate-500 font-semibold block text-[10px]">The flaw of dollar drift</span>
+              <span class="text-slate-500 font-semibold block text-xs">The flaw of dollar drift</span>
               <div class="font-bold text-slate-900 text-sm">Constant Dollar Moves Fail</div>
               <p class="text-slate-500 katex-ignore">If Berkshire Hathaway is <span>$</span>600,000 and Apple is <span>$</span>200, a <span>$</span>5 daily drift means 0.0008% vs 2.5%. Investors demand percentage returns!</p>
             </div>
             <div class="p-4 rounded-2xl bg-emerald-100/70 border border-emerald-300 space-y-1">
-              <span class="text-emerald-800 font-semibold block text-[10px]">The bridge: Multiply by $S$</span>
+              <span class="text-emerald-800 font-semibold block text-xs">The bridge: Multiply by $S$</span>
               <div class="font-bold text-emerald-950 text-sm">$$dS = \mu S \, dt + \sigma S \, dz$$</div>
               <p class="text-emerald-900">Drift becomes $\mu S$, and volatility becomes $\sigma S$. Dividing by $S$ gives constant percentage returns!</p>
             </div>
             <div class="p-4 rounded-2xl bg-white border border-slate-200 space-y-1">
-              <span class="text-slate-500 font-semibold block text-[10px]">What this unlocks</span>
+              <span class="text-slate-500 font-semibold block text-xs">What this unlocks</span>
               <div class="font-bold text-slate-900 text-sm">Protected Zero Floor ($S \gt 0$)</div>
               <p class="text-slate-500">As price nears $0$, shocks shrink to $0$. Stock prices naturally obey limited liability and can never go negative.</p>
             </div>
@@ -2432,7 +2483,7 @@
         <div class="zen-panel p-6 sm:p-8 rounded-3xl space-y-6 border border-emerald-200 bg-white shadow-xs">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
             <div>
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
                 <span>🧪 Interactive Laboratory</span>
               </div>
               <h3 class="text-xl font-bold text-slate-900 mt-1">Live Parameter Sandbox: $dS = \mu S \, dt + \sigma S \, dz$</h3>
@@ -2462,7 +2513,7 @@
                 <span id="gbm-val-mu" class="font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded border border-slate-200">+12.0%</span>
               </div>
               <input type="range" id="gbm-slider-mu" min="-0.30" max="0.40" step="0.02" value="0.12" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateGbmSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>-30%</span>
                 <span>0% (Risk-free)</span>
                 <span>+40%</span>
@@ -2476,7 +2527,7 @@
                 <span id="gbm-val-sigma" class="font-mono font-bold text-indigo-700 bg-white px-2 py-0.5 rounded border border-slate-200">25.0%</span>
               </div>
               <input type="range" id="gbm-slider-sigma" min="0.05" max="0.60" step="0.05" value="0.25" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateGbmSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>5% (Steady)</span>
                 <span>30%</span>
                 <span>60% (High Vol)</span>
@@ -2490,7 +2541,7 @@
                 <span id="gbm-val-s0" class="font-mono font-bold text-sky-700 bg-white px-2 py-0.5 rounded border border-slate-200">$40.00</span>
               </div>
               <input type="range" id="gbm-slider-s0" min="10" max="100" step="5" value="40" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer" oninput="updateGbmSandbox()" />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-400 font-mono">
                 <span>$10</span>
                 <span>$50</span>
                 <span>$100</span>
@@ -2501,7 +2552,7 @@
           <!-- Canvas Display -->
           <div class="relative w-full h-64 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-inner">
             <canvas id="canvas-gbm-lab" class="w-full h-full block"></canvas>
-            <div class="absolute top-3 left-3 flex flex-wrap items-center gap-2 text-[11px] font-mono bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-slate-300">
+            <div class="absolute top-3 left-3 flex flex-wrap items-center gap-2 text-xs font-mono bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800 text-slate-300">
               <span class="flex items-center gap-1.5"><span class="w-2.5 h-0.5 bg-emerald-400 inline-block"></span> GBM Path ($dS = \mu S dt + \sigma S dz$)</span>
               <span id="legend-wiener-compare" class="hidden items-center gap-1.5 text-rose-400"><span class="text-slate-600">&bull;</span> <span class="w-2.5 h-0.5 bg-rose-500 inline-block"></span> Standard Wiener (Crash below $0$)</span>
               <span class="text-slate-600">&bull;</span>
@@ -2512,19 +2563,19 @@
           <!-- Live Dynamic Stats Strip -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-500 block font-sans font-semibold">Theoretical Mean ($S_0 e^{\mu T}$)</span>
+              <span class="text-xs text-slate-500 block font-sans font-semibold">Theoretical Mean ($S_0 e^{\mu T}$)</span>
               <span id="gbm-stat-mean" class="text-base font-bold text-emerald-600">$45.10</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-500 block font-sans font-semibold">Typical Median ($S_0 e^{(\mu - \frac{\sigma^2}{2}) T}$)</span>
+              <span class="text-xs text-slate-500 block font-sans font-semibold">Typical Median ($S_0 e^{(\mu - \frac{\sigma^2}{2}) T}$)</span>
               <span id="gbm-stat-median" class="text-base font-bold text-sky-600">$43.62</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-500 block font-sans font-semibold">Volatility Drag ($-\frac{1}{2}\sigma^2$)</span>
+              <span class="text-xs text-slate-500 block font-sans font-semibold">Volatility Drag ($-\frac{1}{2}\sigma^2$)</span>
               <span id="gbm-stat-drag" class="text-base font-bold text-rose-600">-3.12%</span>
             </div>
             <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-              <span class="text-[10px] text-slate-500 block font-sans font-semibold">Zero-Floor Status</span>
+              <span class="text-xs text-slate-500 block font-sans font-semibold">Zero-Floor Status</span>
               <span class="text-xs font-bold text-emerald-700 leading-snug block mt-0.5">Strictly $S \gt 0$ ✓</span>
             </div>
           </div>
@@ -2549,13 +2600,13 @@
           <!-- Formula 1: Closed-form Solution with dG first -->
           <div class="p-6 bg-slate-50 border border-emerald-200 rounded-2xl text-center font-mono space-y-4">
             <div>
-              <span class="text-[11px] text-slate-500 font-semibold font-sans block mb-1">Step 1: Log-price differential via Itô's Lemma ($dG$)</span>
+              <span class="text-xs text-slate-500 font-semibold font-sans block mb-1">Step 1: Log-price differential via Itô's Lemma ($dG$)</span>
               <div class="text-base sm:text-xl text-emerald-900 font-bold">
                 $$dG = d(\ln S) = \left(\mu - \frac{\sigma^2}{2}\right) dt + \sigma \, dz$$
               </div>
             </div>
             <div class="border-t border-emerald-100 pt-3">
-              <span class="text-[11px] text-slate-500 font-semibold font-sans block mb-1">Step 2: Exponentiated closed-form future stock price ($S(T)$)</span>
+              <span class="text-xs text-slate-500 font-semibold font-sans block mb-1">Step 2: Exponentiated closed-form future stock price ($S(T)$)</span>
               <div class="text-lg sm:text-2xl text-emerald-900 font-bold">
                 $$S(T) = S_0 \exp\left( \left(\mu - \frac{\sigma^2}{2}\right) T + \sigma \sqrt{T} Z \right), \quad Z \sim \mathcal{N}(0, 1)$$
               </div>
@@ -2569,22 +2620,22 @@
               <div class="flex items-center gap-2 text-xs font-semibold text-emerald-800 font-mono">
                 <span>🔗 Step-by-step progression: $\frac{dS}{S} \;\to\; d(\ln S) \;\to\; S(T)$</span>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700">Closed Form</span>
+              <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 rounded border border-emerald-200 text-emerald-700">Closed Form</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-500 font-semibold block text-[10px] font-mono">Step 1: Percentage return SDE</span>
+                <span class="text-slate-500 font-semibold block text-xs font-mono">Step 1: Percentage return SDE</span>
                 <div class="font-bold text-slate-800">Percentage Return SDE</div>
                 <p class="text-slate-500">Stock changes follow $\frac{dS}{S} = \mu \, dt + \sigma \, dz$.</p>
               </div>
               <div class="p-3 bg-emerald-100/70 rounded-xl border border-emerald-300 space-y-1">
-                <span class="text-emerald-800 font-semibold block text-[10px] font-mono">Step 2: Log transform via Itô</span>
+                <span class="text-emerald-800 font-semibold block text-xs font-mono">Step 2: Log transform via Itô</span>
                 <div class="font-bold text-emerald-950">Log Transform $G(S) = \ln S$</div>
                 <p class="text-emerald-900">With $G' = \frac{1}{S}$ and $G'' = -\frac{1}{S^2}$, Itô yields $d\ln S = \left(\mu - \frac{1}{2}\sigma^2\right)dt + \sigma dz$.</p>
               </div>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-500 font-semibold block text-[10px] font-mono">Step 3: Exponentiation to $S(T)$</span>
+                <span class="text-slate-500 font-semibold block text-xs font-mono">Step 3: Exponentiation to $S(T)$</span>
                 <div class="font-bold text-slate-800">Exponentiated Safety ($S(T) \gt 0$)</div>
                 <p class="text-slate-500">Because $e^n \gt 0$ for any real exponent $n$, taking $\exp$ yields strictly positive prices ($S(T) \gt 0$), embedding limited liability!</p>
               </div>
@@ -2598,10 +2649,10 @@
                 <span class="text-xl">📖</span>
                 <div>
                   <h4 class="font-bold text-slate-900 text-sm sm:text-base">Textbook Breakdown: What is this formula &amp; what is <code class="px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-900 font-mono text-xs font-bold">exp</code>?</h4>
-                  <p class="text-[11px] text-slate-500">Directly from John C. Hull, <em>Options, Futures, and Other Derivatives</em> (Chapter 14, Sections 14.3 &amp; 14.4).</p>
+                  <p class="text-xs text-slate-500">Directly from John C. Hull, <em>Options, Futures, and Other Derivatives</em> (Chapter 14, Sections 14.3 &amp; 14.4).</p>
                 </div>
               </div>
-              <span class="self-start sm:self-auto text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 font-mono">
+              <span class="self-start sm:self-auto text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 font-mono">
                 Hull Ch. 14 Reference
               </span>
             </div>
@@ -2619,7 +2670,7 @@
                 <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-center font-mono text-xs text-indigo-900 font-bold">
                   $$\exp(x) \equiv e^x$$
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-xs text-slate-500 leading-relaxed">
                   <strong>Why does it appear?</strong> In Itô's Lemma, we solved for log-price: $\ln\left(\frac{S(T)}{S_0}\right) = \left(\mu - \frac{1}{2}\sigma^2\right)T + \sigma\sqrt{T}Z$. To isolate $S(T)$, we must take the exponential function (anti-logarithm) on both sides: $S(T) = S_0 \cdot \exp(\dots)$!
                 </p>
               </div>
@@ -2628,22 +2679,22 @@
               <div class="p-4 rounded-xl bg-white border border-indigo-100 shadow-2xs space-y-2">
                 <div class="flex items-center gap-2">
                   <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center">2</span>
-                  <h5 class="font-bold text-slate-800 text-xs">Why lowercase $e^n \gt 0$ guarantees limited liability</h5>
+                  <h5 class="font-bold text-slate-800 text-sm">Why lowercase $e^n \gt 0$ guarantees limited liability</h5>
                 </div>
-                <p class="text-xs text-slate-600 leading-relaxed">
+                <p class="text-sm text-slate-600 leading-relaxed">
                   <strong>Notation reminder:</strong> Always use lowercase $e \approx 2.718$ (Euler's constant) and lowercase exponent $n$ (any real power). Never confuse with capital $\mathbb{E}$ (Expectation) or capital $N$ (Normal distribution or path count).
                 </p>
-                <div class="grid grid-cols-2 gap-2 text-center font-mono text-[11px]">
-                  <div class="p-2 rounded bg-emerald-50 border border-emerald-200 text-emerald-900">
-                    <span class="text-[10px] text-emerald-600 block font-medium">Massive Bull Run ($n = +2$)</span>
-                    $e^{+2} \approx 7.39 \gt 0$
+                <div class="grid grid-cols-2 gap-2.5 text-center font-mono text-sm">
+                  <div class="p-2.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-900">
+                    <span class="text-xs text-emerald-700 block font-bold uppercase tracking-wider">Massive Bull Run ($n = +2$)</span>
+                    <span class="font-bold text-sm sm:text-base">$e^{+2} \approx 7.39 \gt 0$</span>
                   </div>
-                  <div class="p-2 rounded bg-amber-50 border border-amber-200 text-amber-900">
-                    <span class="text-[10px] text-amber-600 block font-medium">Historic Crash ($n = -4$)</span>
-                    $e^{-4} = \frac{1}{e^4} \approx 0.018 \gt 0$
+                  <div class="p-2.5 rounded bg-amber-50 border border-amber-200 text-amber-900">
+                    <span class="text-xs text-amber-700 block font-bold uppercase tracking-wider">Historic Crash ($n = -4$)</span>
+                    <span class="font-bold text-sm sm:text-base">$e^{-4} = \frac{1}{e^4} \approx 0.018 \gt 0$</span>
                   </div>
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-sm text-slate-600 leading-relaxed">
                   Because $S_0 \gt 0$ and $e^n \gt 0$ for any real number $n$, their product $S(T) = S_0 e^n \gt 0$ stays strictly positive. Stock prices can never touch or cross below zero!
                 </p>
               </div>
@@ -2651,48 +2702,50 @@
 
             <!-- Term-by-Term Anatomy Strip -->
             <div class="p-4 rounded-xl bg-white border border-indigo-100 space-y-3">
-              <h5 class="font-bold text-slate-800 text-xs flex items-center gap-2">
+              <h5 class="font-bold text-slate-800 text-sm flex items-center gap-2">
                 <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-bold text-xs flex items-center justify-center">3</span>
                 <span>Term-by-term anatomy of Hull's formula</span>
               </h5>
-              <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs">
-                <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+              <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
                   <span class="font-mono font-bold text-emerald-700 text-sm">$S_0$</span>
-                  <p class="text-[11px] text-slate-600 font-medium">Initial Price</p>
-                  <p class="text-[10px] text-slate-400">Current market price today ($t = 0$), e.g. &#36;100.</p>
+                  <p class="text-xs text-slate-700 font-bold uppercase tracking-wider">Initial Price</p>
+                  <p class="text-sm text-slate-600 leading-relaxed">Current market price today ($t = 0$), e.g. <span class="katex-ignore">$</span>100.</p>
                 </div>
-                <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
                   <span class="font-mono font-bold text-sky-700 text-sm">$\mu T$</span>
-                  <p class="text-[11px] text-slate-600 font-medium">Expected Drift</p>
-                  <p class="text-[10px] text-slate-400">Expected annual stock return scaled over time period $T$.</p>
+                  <p class="text-xs text-slate-700 font-bold uppercase tracking-wider">Expected Drift</p>
+                  <p class="text-sm text-slate-600 leading-relaxed">Expected annual stock return scaled over time period $T$.</p>
                 </div>
-                <div class="p-2.5 rounded-lg bg-rose-50 border border-rose-200 space-y-1">
+                <div class="p-3 rounded-lg bg-rose-50 border border-rose-200 space-y-1">
                   <span class="font-mono font-bold text-rose-700 text-sm">$-\frac{1}{2}\sigma^2 T$</span>
-                  <p class="text-[11px] text-rose-800 font-bold">Itô Curvature Term</p>
-                  <p class="text-[10px] text-slate-500">From $\frac{1}{2}\frac{\partial^2 G}{\partial S^2}\sigma^2 S^2 = -\frac{1}{2}\sigma^2$.</p>
+                  <p class="text-xs text-rose-800 font-bold uppercase tracking-wider">Itô Curvature Term</p>
+                  <p class="text-sm text-slate-600 leading-relaxed">From $\frac{1}{2}\frac{\partial^2 G}{\partial S^2}\sigma^2 S^2 = -\frac{1}{2}\sigma^2$.</p>
                 </div>
-                <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 space-y-1">
+                <div class="p-3 rounded-lg bg-indigo-50 border border-indigo-200 space-y-1">
                   <span class="font-mono font-bold text-indigo-700 text-sm">$\sigma \sqrt{T} Z$</span>
-                  <p class="text-[11px] text-indigo-800 font-medium">Random Shock</p>
-                  <p class="text-[10px] text-slate-500">Diffusion spread with $Z \sim \mathcal{N}(0, 1)$ standard normal draw.</p>
+                  <p class="text-xs text-indigo-800 font-bold uppercase tracking-wider">Random Shock</p>
+                  <p class="text-sm text-slate-600 leading-relaxed">Diffusion spread with $Z \sim \mathcal{N}(0, 1)$ standard normal draw.</p>
                 </div>
-                <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 space-y-1">
+                <div class="p-3 rounded-lg bg-emerald-50 border border-emerald-200 space-y-1">
                   <span class="font-mono font-bold text-emerald-800 text-sm">$S(T) \gt 0$</span>
-                  <p class="text-[11px] text-emerald-800 font-bold">Guaranteed Floor</p>
-                  <p class="text-[10px] text-emerald-700">Stock remains solvent; stockholders have limited liability.</p>
+                  <p class="text-xs text-emerald-800 font-bold uppercase tracking-wider">Guaranteed Floor</p>
+                  <p class="text-sm text-emerald-800 leading-relaxed">Stock remains solvent; stockholders have limited liability.</p>
                 </div>
               </div>
             </div>
 
             <!-- Concrete Numerical Walkthrough -->
-            <div class="p-3.5 rounded-xl bg-slate-900 text-slate-200 text-xs font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <span class="text-emerald-400 font-bold uppercase text-[10px] tracking-wider block font-sans">Concrete Hull Chapter 14 Calculation:</span>
-                <span class="text-slate-300">If $S_0 = \text{&#36;}100$, $\mu = 10\%$, $\sigma = 20\%$, $T = 1 \text{ yr}$, with neutral shock ($Z = 0$):</span>
+            <div class="p-4 rounded-xl bg-slate-900 text-slate-200 font-mono flex flex-col md:flex-row md:items-center justify-between gap-3 border border-slate-700/60 shadow-inner">
+              <div class="space-y-1.5">
+                <span class="text-emerald-400 font-bold uppercase text-xs tracking-wider block font-sans">Concrete Hull Chapter 14 Calculation:</span>
+                <p class="text-slate-200 text-sm leading-relaxed font-sans">
+                  If $S_0 = 100$ (<span class="katex-ignore">$</span>100), $\mu = 10\%$, $\sigma = 20\%$, $T = 1\text{ y}$, with neutral shock ($Z = 0$):
+                </p>
               </div>
-              <div class="bg-slate-800/90 px-3 py-1.5 rounded-lg border border-slate-700 text-right shrink-0">
-                <span class="text-slate-400 text-[10px] block">Exponent $n = 0.10 - 0.02 = +0.08$</span>
-                <span class="text-emerald-400 font-bold">$S(1) = 100 \times e^{0.08} \approx \text{&#36;}108.33$</span>
+              <div class="bg-slate-800/90 px-3.5 py-2 rounded-lg border border-slate-700 text-left md:text-right shrink-0 space-y-1">
+                <span class="text-slate-300 text-sm block font-sans">Exponent: $n = 0.10 - 0.02 = +0.08$</span>
+                <span class="text-emerald-400 font-bold text-sm sm:text-base block font-mono">$S(1) = 100 \times e^{0.08} \approx$ <span class="katex-ignore">$</span>108.33</span>
               </div>
             </div>
           </div>
@@ -2705,7 +2758,7 @@
           <div class="flex items-center gap-2">
             <span class="text-2xl">⚠️</span>
             <div>
-              <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
+              <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider font-mono">Interactive "What-If?" Exam Trap</span>
               <h4 class="text-lg font-bold text-slate-900">The Itô Second-Derivative Exam Trap ($-\frac{1}{2}\sigma^2$)</h4>
             </div>
           </div>
@@ -2810,10 +2863,10 @@
             <div class="p-5 rounded-2xl bg-teal-50/50 border border-teal-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-teal-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-teal-600 text-white font-mono font-bold text-xs uppercase">
                     1. Formal Definition
                   </span>
-                  <span class="text-slate-400 font-mono text-[11px]">Discrete Algorithm</span>
+                  <span class="text-slate-400 font-mono text-xs">Discrete Algorithm</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">The Step-by-Step Simulation Formula (Hull Table 14.1)</h4>
                 <div class="p-3 bg-white rounded-xl border border-teal-200 text-center font-mono text-teal-950 font-bold text-xs sm:text-sm shadow-2xs">
@@ -2825,7 +2878,7 @@
                 <div class="p-2.5 bg-white rounded-lg border border-teal-100 text-center font-mono text-xs text-teal-900 font-semibold">
                   $$S(t + \Delta t) = S(t)\exp\left(\left(\mu - \frac{1}{2}\sigma^2\right)\Delta t + \sigma\sqrt{\Delta t}\,\epsilon\right)$$
                 </div>
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <p class="text-xs text-slate-500 leading-relaxed">
                   Generating $N$ independent paths simulates future market trajectories, exactly reproducing John Hull Table 14.1.
                 </p>
               </div>
@@ -2835,10 +2888,10 @@
             <div class="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4">
               <div class="space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-[10px] uppercase tracking-wide">
+                  <span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wide">
                     2. In Plain English
                   </span>
-                  <span class="text-slate-500 font-mono text-[11px] font-semibold">Core Intuition</span>
+                  <span class="text-slate-500 font-mono text-xs font-semibold">Core Intuition</span>
                 </div>
                 
                 <div>
@@ -2884,7 +2937,7 @@
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+              <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-xs text-slate-600 leading-relaxed">
                 💡 <strong>Quantitative Pricing:</strong> Instead of predicting one path, traders average discounted payoffs across simulated paths to price options.
               </div>
             </div>
@@ -2893,22 +2946,22 @@
             <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-0.5 rounded-md bg-teal-600 text-white font-mono font-bold text-[10px] uppercase">
+                  <span class="px-2.5 py-0.5 rounded-md bg-teal-600 text-white font-mono font-bold text-xs uppercase">
                     3. Core Exam Takeaway
                   </span>
-                  <span class="text-teal-800 font-mono text-[11px] font-bold">Hull Exam Focus</span>
+                  <span class="text-teal-800 font-mono text-xs font-bold">Hull Exam Focus</span>
                 </div>
                 <h4 class="font-bold text-slate-900 text-sm">Convergence Rate &amp; Path Dependency</h4>
                 <div class="space-y-2 text-xs text-slate-700">
                   <div class="p-2.5 rounded-lg bg-white border border-teal-200 space-y-1">
                     <div class="font-bold text-teal-950">🎯 Law of Large Numbers Convergence:</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       As path count $N \to \infty$, the sample mean converges to theoretical $\mathbb{E}[S_T] = S_0 e^{\mu T}$. The standard error shrinks at rate $\frac{\sigma}{\sqrt{N}}$.
                     </p>
                   </div>
                   <div class="p-2.5 rounded-lg bg-white border border-teal-200 space-y-1">
                     <div class="font-bold text-teal-950">💡 Step Choice: Daily (252) vs Weekly (52 / Hull Table 14.1):</div>
-                    <p class="text-[11px] text-slate-600">
+                    <p class="text-xs text-slate-600">
                       John Hull Table 14.1 uses weekly steps ($\Delta t = 1/52 \approx 0.0192$), while daily stock simulation uses $\Delta t = 1/252$. Both converge to the identical continuous GBM as $\Delta t \to 0$!
                     </p>
                   </div>
@@ -2938,7 +2991,7 @@
               class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer"
               oninput="updateParams()"
             />
-            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+            <div class="flex justify-between text-xs text-slate-500 font-mono">
               <span>-40%</span>
               <span>0% (Steady)</span>
               <span>+60%</span>
@@ -2963,7 +3016,7 @@
               class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer"
               oninput="updateParams()"
             />
-            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+            <div class="flex justify-between text-xs text-slate-500 font-mono">
               <span>5% (Calm Lake)</span>
               <span>30%</span>
               <span>75% (Stormy)</span>
@@ -2998,7 +3051,7 @@
               </button>
             </div>
             
-            <div id="hint-step-mode" class="text-[10px] text-slate-500 pt-0.5 font-mono">
+            <div id="hint-step-mode" class="text-xs text-slate-500 pt-0.5 font-mono">
               $\Delta t = 1/252 \approx 0.00397$ (Daily trading)
             </div>
           </div>
@@ -3016,7 +3069,7 @@
               <option value="60" selected>60 Paths (Balanced)</option>
               <option value="100">100 Paths (Full Cloud)</option>
             </select>
-            <div id="subhint-paths" class="text-[10px] text-slate-500 pt-0.5 font-mono">
+            <div id="subhint-paths" class="text-xs text-slate-500 pt-0.5 font-mono">
               1 Year Horizon ($T=1.0$)
             </div>
           </div>
@@ -3076,7 +3129,7 @@
               </div>
             </div>
 
-            <div class="flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 text-[11px] font-mono">
+            <div class="flex items-center gap-2 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 text-xs font-mono">
               <span class="text-slate-500">Day:</span>
               <span id="canvas-day-counter" class="text-sky-800 font-bold">0 / 252</span>
             </div>
@@ -3106,27 +3159,27 @@
           <!-- Live Stats -->
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-4 text-xs">
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Starting ($S_0$)</span>
+              <span class="text-xs font-mono text-slate-500 block font-bold">Starting ($S_0$)</span>
               <span class="text-sm font-bold font-mono text-slate-900">$100.00</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Simulated Average</span>
+              <span class="text-xs uppercase font-mono text-slate-500 block font-bold">Simulated Average</span>
               <span id="stat-mean" class="text-sm font-bold font-mono text-teal-700">--</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Theoretical $E[S_T]$</span>
+              <span class="text-xs font-mono text-slate-500 block font-bold">Theoretical $E[S_T]$</span>
               <span id="stat-theory" class="text-sm font-bold font-mono text-amber-700">--</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Highest Outcome</span>
+              <span class="text-xs uppercase font-mono text-slate-500 block font-bold">Highest Outcome</span>
               <span id="stat-max" class="text-sm font-bold font-mono text-emerald-700">--</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Lowest Outcome</span>
+              <span class="text-xs uppercase font-mono text-slate-500 block font-bold">Lowest Outcome</span>
               <span id="stat-min" class="text-sm font-bold font-mono text-rose-700">--</span>
             </div>
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <span class="text-[10px] uppercase font-mono text-slate-500 block font-bold">Positive Paths</span>
+              <span class="text-xs uppercase font-mono text-slate-500 block font-bold">Positive Paths</span>
               <span id="stat-winrate" class="text-sm font-bold font-mono text-indigo-700">--</span>
             </div>
           </div>
@@ -3148,7 +3201,7 @@
               <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-800 font-mono">
                 <span>🔗 Annual Parameters &rarr; Weekly Hull Stepper</span>
               </div>
-              <span class="text-[10px] font-mono font-bold bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-700">Textbook Equation</span>
+              <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 rounded border border-sky-200 text-sky-700">Textbook Equation</span>
             </div>
 
             <div class="p-4 bg-white rounded-xl border border-sky-200 text-center font-mono">
@@ -3159,17 +3212,17 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 1: Annual Parameters</span>
+                <span class="text-slate-400 font-bold uppercase block text-xs font-mono">Step 1: Annual Parameters</span>
                 <div class="font-bold text-slate-800">Annual Parameters</div>
                 <p class="text-slate-500">Hull specifies annual return $\mu = 0.15$ ($15\%$) and annual volatility $\sigma = 0.30$ ($30\%$).</p>
               </div>
               <div class="p-3 bg-sky-100/70 rounded-xl border border-sky-300 space-y-1">
-                <span class="text-sky-800 font-bold uppercase block text-[10px] font-mono">Step 2: Weekly Conversion</span>
+                <span class="text-sky-800 font-bold uppercase block text-xs font-mono">Step 2: Weekly Conversion</span>
                 <div class="font-bold text-sky-950">Weekly Discretization ($\Delta t = \frac{1}{52}$)</div>
                 <p class="text-sky-900">Drift coefficient: $0.15 \times \frac{1}{52} = 0.00288$. Shock jump coefficient: $0.30 \times \sqrt{\frac{1}{52}} = 0.0416$.</p>
               </div>
               <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
-                <span class="text-slate-400 font-bold uppercase block text-[10px] font-mono">Step 3: Stepper Result</span>
+                <span class="text-slate-400 font-bold uppercase block text-xs font-mono">Step 3: Stepper Result</span>
                 <div class="font-bold text-slate-800">Deterministic Arithmetic Stepper</div>
                 <p class="text-slate-500">Every week's dollar gain or loss is directly calculated with simple multiplication!</p>
               </div>
@@ -3199,7 +3252,7 @@
               </button>
 
               <div id="hull-calc-box" class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1 text-xs font-mono">
-                <div class="text-slate-500 font-bold border-b border-slate-200 pb-1 text-[11px]">Formula State:</div>
+                <div class="text-slate-500 font-bold border-b border-slate-200 pb-1 text-xs">Formula State:</div>
                 <div>Start ($S$): <span id="calc-st" class="text-sky-800 font-bold">$100.00</span></div>
                 <div>Shock ($\epsilon$): <span id="calc-eps" class="text-indigo-800 font-bold">--</span></div>
                 <div>Drift: <span id="calc-drift" class="text-teal-800 font-bold">--</span></div>
@@ -3211,7 +3264,7 @@
             <div class="lg:col-span-2 overflow-x-auto">
               <table class="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr class="border-b border-slate-200 text-slate-500 font-mono text-[11px]">
+                  <tr class="border-b border-slate-200 text-slate-500 font-mono text-xs">
                     <th class="p-2">Week</th>
                     <th class="p-2">Start Price</th>
                     <th class="p-2">Shock ($\epsilon$)</th>
@@ -3260,7 +3313,7 @@
             </div>
 
             <div class="text-center sm:text-right bg-white px-6 py-3 rounded-2xl border border-slate-200 shadow-2xs">
-              <span class="text-[10px] font-mono uppercase text-slate-500 block font-bold">Overall Score</span>
+              <span class="text-xs font-mono uppercase text-slate-500 block font-bold">Overall Score</span>
               <span id="practice-score-display" class="text-3xl font-black font-mono text-amber-600">0 / 12</span>
             </div>
           </div>
@@ -3273,8 +3326,8 @@
                 🧭
               </div>
               <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider group-hover:text-sky-700">Wiener Specialist</h5>
-              <p class="text-[10px] text-slate-500 mt-0.5">Topics: Drift $a$ &amp; Shock Jump $b$</p>
-              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-[10px]">
+              <p class="text-xs text-slate-500 mt-0.5">Topics: Drift $a$ &amp; Shock Jump $b$</p>
+              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-xs">
                 <span id="badge-wiener-status" class="font-bold text-slate-400">0 / 3</span>
                 <span class="text-sky-600 font-semibold group-hover:underline">Study &rarr;</span>
               </div>
@@ -3286,8 +3339,8 @@
                 🌊
               </div>
               <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider group-hover:text-indigo-700">Itô Master</h5>
-              <p class="text-[10px] text-slate-500 mt-0.5">Topics: Lemma &amp; Curvature</p>
-              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-[10px]">
+              <p class="text-xs text-slate-500 mt-0.5">Topics: Lemma &amp; Curvature</p>
+              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-xs">
                 <span id="badge-ito-status" class="font-bold text-slate-400">0 / 3</span>
                 <span class="text-indigo-600 font-semibold group-hover:underline">Study &rarr;</span>
               </div>
@@ -3299,8 +3352,8 @@
                 🛡️
               </div>
               <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider group-hover:text-emerald-700">GBM Guardian</h5>
-              <p class="text-[10px] text-slate-500 mt-0.5">Topics: Percentage &amp; Zero Floor</p>
-              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-[10px]">
+              <p class="text-xs text-slate-500 mt-0.5">Topics: Percentage &amp; Zero Floor</p>
+              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-xs">
                 <span id="badge-gbm-status" class="font-bold text-slate-400">0 / 3</span>
                 <span class="text-emerald-600 font-semibold group-hover:underline">Study &rarr;</span>
               </div>
@@ -3312,8 +3365,8 @@
                 🎲
               </div>
               <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider group-hover:text-amber-700">Simulation Maestro</h5>
-              <p class="text-[10px] text-slate-500 mt-0.5">Topics: Normal Shocks &amp; Clouds</p>
-              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-[10px]">
+              <p class="text-xs text-slate-500 mt-0.5">Topics: Normal Shocks &amp; Clouds</p>
+              <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-100 text-xs">
                 <span id="badge-mc-status" class="font-bold text-slate-400">0 / 3</span>
                 <span class="text-amber-600 font-semibold group-hover:underline">Study &rarr;</span>
               </div>
@@ -3380,7 +3433,7 @@
             <div>
               <div class="flex items-center gap-2">
                 <h3 class="text-xl font-black text-slate-900">Calc Mode: Normal Distribution Solver</h3>
-                <span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase font-mono">Anytime Tool</span>
+                <span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase font-mono">Anytime Tool</span>
               </div>
               <p class="text-xs text-slate-500">Solve Wiener process mean, variance, standard deviation &amp; normal confidence intervals</p>
             </div>
@@ -3457,17 +3510,17 @@
             <!-- Quick Readouts -->
             <div class="grid grid-cols-2 gap-3 text-xs">
               <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <span class="text-[10px] text-slate-400 uppercase font-mono block">Expected Mean</span>
+                <span class="text-xs text-slate-400 uppercase font-mono block">Expected Mean</span>
                 <span id="calc-modal-res-mean" class="text-base font-bold text-amber-600">+$20.00M</span>
               </div>
               <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <span class="text-[10px] text-slate-400 uppercase font-mono block">Std Dev at $T$</span>
+                <span class="text-xs text-slate-400 font-mono block">Std Dev at $T$</span>
                 <span id="calc-modal-res-sd" class="text-base font-bold text-sky-600">30.00M</span>
               </div>
               <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 col-span-2">
-                <span class="text-[10px] text-slate-400 uppercase font-mono block">Confidence Interval Range</span>
+                <span class="text-xs text-slate-400 uppercase font-mono block">Confidence Interval Range</span>
                 <span id="calc-modal-res-bounds" class="text-sm font-bold text-indigo-900 block">[-38.80M, +78.80M]</span>
-                <span id="calc-modal-res-overdraft" class="text-[11px] text-rose-600 font-bold block mt-1">Overdraft / Negative Risk: 25.25%</span>
+                <span id="calc-modal-res-overdraft" class="text-xs text-rose-600 font-bold block mt-1">Overdraft / Negative Risk: 25.25%</span>
               </div>
             </div>
 
@@ -5809,7 +5862,7 @@
           if (isAnswered) {
             const isCorrect = chosenOpt === q.correct;
             feedbackHtml = `
-              <div class="p-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed ${isCorrect ? 'bg-emerald-50 border border-emerald-200 text-emerald-900' : 'bg-rose-50 border border-rose-200 text-rose-900'}">
+              <div class="p-4 rounded-2xl text-sm sm:text-base leading-relaxed ${isCorrect ? 'bg-emerald-50 border border-emerald-200 text-emerald-900' : 'bg-rose-50 border border-rose-200 text-rose-900'}">
                 ${isCorrect ? q.explanation : "🌿 Keep going! Review the explanation: " + q.explanation}
               </div>
             `;

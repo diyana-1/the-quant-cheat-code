@@ -26,3 +26,16 @@ Delivers high-contrast, crystal-clear readability in Night (Twilight) Mode, bi-d
    - Protected `resizeCanvas()` with zero-dimension checks and transform reset (`ctx.resetTransform()`) to prevent cumulative zoom stacking or errors on repeated window resizes.
    - Optimized mini-animation loops to pause cleanly when off-screen and resume automatically at 60fps upon returning to the Start tab.
    - Tested and verified compilation with zero errors.
+
+5. **Mathematical Formatting, Lowercase Notation & Hull Calculation Polish**:
+   - **Lowercase $(dz)^2 = dt$ Notation**: Completely removed `.math-small-caps` CSS rule (`font-variant: small-caps`) and all `math-small-caps` classes, ensuring $(dz)^2 = dt$, $dz$, and $dt$ render in clean standard lowercase mathematical italics without any unwanted capitalization.
+   - **Concrete Hull Chapter 14 Calculation**: Fixed KaTeX delimiter conflicts caused by unescaped currency entities (`\text{&#36;}` / `\$`). Safely isolated currency symbols inside `<span class="katex-ignore">$</span>` so $S_0 = 100$ ($100), $\mu = 10\%$, $\sigma = 20\%$, $T = 1\text{ yr}$, $n = 0.10 - 0.02 = +0.08$, and $S(1) \approx \$108.33$ render crisply and accurately without line breaks or raw markup.
+   - **12px Minimum Font Enforcement**: Set a universal 12px (`text-xs`) minimum across body text, badges, subscripts, and descriptions with enhanced daylight (#64748b) and dark mode (#cbd5e1) contrast for maximum legibility.
+   - **Clarified 95% Confidence Step**: Updated the Wiener confidence step label to `95% Margin: ±1.96 × Standard Deviation` to make the calculation transparent.
+
+6. **14px Base Typography for Explanations & 12px Badges**:
+   - **14px Descriptive & Mathematical Base**: Enforced a clean `14px` (`text-sm`, line height `1.62`) base across all body paragraphs, concept explanations, step walkthroughs, formula descriptions, and quiz feedback across the entire application.
+   - **12px Badges & Labels**: Preserved crisp `12px` (`text-xs`) typography for step badges, station pills, chip indicators, counter labels, and navigation tags.
+
+7. **Time Unit Abbreviation Updated in Tab GBM**:
+   - Changed `$T = 1\text{ yr}$` to `$T = 1\text{ y}$` in the Concrete Hull Chapter 14 Calculation walkthrough within the Geometric Brownian Motion (GBM) tab.
