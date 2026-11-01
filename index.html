@@ -830,7 +830,7 @@
                     <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">FACT 4</span>
                     <h4 class="text-base font-bold text-amber-950 leading-snug">It predicts the probability distribution of outcomes!</h4>
                     <p class="text-xs sm:text-sm text-amber-900 leading-relaxed">
-                      Nobody can predict a single path. By simulating 100 paths, we uncover the distribution to price financial options and measure risk.
+                      Nobody can predict a single path. By simulating multiple paths using John Hull's discrete steps $\Delta S = \mu S \Delta t + \sigma S \epsilon \sqrt{\Delta t}$, we reveal the full lognormal probability distribution of future asset prices.
                     </p>
                   </div>
                   <div class="text-xs text-amber-700 font-bold pt-2 border-t border-amber-200/60">Tap to flip back ↺</div>
@@ -2234,7 +2234,7 @@
                     Advanced / Optional
                   </span>
                 </div>
-                <p class="text-xs text-slate-500">You don't need this to understand the Itô process! This is just a sneak peek for options pricing.</p>
+                <p class="text-xs text-slate-500">You don't need this to understand the Itô process! This is a sneak peek of Hull Section 14.5 for functions $G(S, t)$ like $\ln S$.</p>
               </div>
             </div>
             <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 self-start sm:self-auto">
@@ -2243,7 +2243,7 @@
           </div>
 
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            While an <strong>Itô Process</strong> models how the underlying asset $S$ moves, <strong>Itô's Lemma</strong> is the mathematical tool used to find the process followed by a derivative or option $G(S, t)$ whose value depends on $S$:
+            While an <strong>Itô Process</strong> models how the underlying asset $S$ moves, <strong>Itô's Lemma</strong> is the mathematical tool used to find the process followed by any function $G(S, t)$ whose value depends on $S$ (such as $G = \ln S$ in Hull 14.6):
           </p>
 
           <!-- Itô's Lemma Formula Box -->
@@ -2981,7 +2981,7 @@
               </div>
 
               <div class="p-2.5 rounded-xl bg-slate-100/90 border border-slate-200 text-xs text-slate-600 leading-relaxed">
-                💡 <strong>Quantitative Pricing:</strong> Instead of predicting one path, traders average discounted payoffs across simulated paths to price options.
+                💡 <strong>Simulating Asset Paths:</strong> Instead of predicting one single path, simulating parallel trajectories uncovers the full terminal lognormal distribution $\ln S_T \sim \phi(\dots)$ and expected stock growth $\mathbb{E}[S_T] = S_0 e^{\mu T}$.
               </div>
             </div>
 
@@ -3461,6 +3461,12 @@
         </div>
         <div class="text-slate-500">
           Designed with care for university students learning John Hull's <em class="text-slate-700">Options, Futures, and Other Derivatives</em>
+        </div>
+        <div>
+          <a href="./poster.html" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold border border-amber-300 transition shadow-2xs">
+            <span>🖼️ Open A3 Innovation Poster</span>
+            <span>&rarr;</span>
+          </a>
         </div>
       </div>
     </footer>

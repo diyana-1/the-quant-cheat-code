@@ -1,6 +1,6 @@
 {
-  "summary":  "Completed mobile and iPad optimization: resolved flip card text mirroring on phones and content boundary overflow on iPad, improved canvas DPI backing buffer pipeline to eliminate 60fps GPU reallocation lag, and restructured the mobile navigation bar with active tab synchronization.",
-  "updatedAt":  "2026-11-01T07:34:09.880801330Z",
+  "summary":  "Implementation plan to align the Monte Carlo simulation formulas in the A3 Poster and Web App strictly with John Hull Chapter 14 and the lecturer's slides (discrete Euler stepping ΔS = μSΔt + σSε√Δt, Hull Table 14.1 weekly stepping ΔS = 0.00288S + 0.0416Sε, and terminal lognormal distribution), removing Black-Scholes call option pricing formulas.",
+  "updatedAt":  "2026-11-01T13:28:09.802301199Z",
   "requestFeedback":  true,
   "userFacing":  true
 }
