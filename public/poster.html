@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A3 Innovation Poster: The Quant Cheat Code (Simulating Markets)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for beautiful math equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderAllMath()"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',
+            }
+          }
+        }
+      }
+    }
+
+    function renderAllMath() {
+      if (window.renderMathInElement) {
+        window.renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          ignoredClasses: ["katex-ignore"],
+          throwOnError: false
+        });
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0f172a;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Exact A3 Portrait Dimensions: 297mm x 420mm */
+    .poster-canvas {
+      width: 297mm;
+      min-height: 420mm;
+      max-height: 420mm;
+      height: 420mm;
+      background: #ffffff;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      margin: 1.5rem auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Print styles for 1-Page A3 PDF Output */
+    @media print {
+      @page {
+        size: A3 portrait;
+        margin: 0;
+      }
+      body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .poster-canvas {
+        margin: 0 !important;
+        box-shadow: none !important;
+        width: 297mm !important;
+        height: 420mm !important;
+        max-height: 420mm !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      [contenteditable="true"] {
+        outline: none !important;
+        background: transparent !important;
+      }
+    }
+
+    .katex {
+      font-size: 1.05em !important;
+    }
+
+    /* Inline Editable Focus States */
+    [contenteditable="true"] {
+      cursor: text;
+      transition: all 0.2s;
+    }
+    [contenteditable="true"]:hover {
+      outline: 1.5px dashed #0284c7;
+      background-color: rgba(2, 132, 199, 0.05);
+      border-radius: 4px;
+    }
+    [contenteditable="true"]:focus {
+      outline: 2px solid #0284c7;
+      background-color: #ffffff;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="p-0 sm:p-4 flex flex-col items-center">
+
+  <!-- TOP ACTION TOOLBAR (HIDDEN IN PRINT) -->
+  <header class="no-print w-full max-w-[297mm] bg-slate-900 border border-slate-700/80 rounded-2xl p-4 mb-3 text-white flex flex-wrap items-center justify-between gap-4 shadow-xl">
+    <div class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 font-black flex items-center justify-center text-lg shadow-md">A3</span>
+      <div>
+        <h1 class="text-base font-bold text-slate-100 flex items-center gap-2">
+          Innovation Exhibition Poster (A3 Portrait)
+        </h1>
+        <p class="text-xs text-slate-400">
+          Topics: <strong>Generalised Wiener</strong> · <strong>Itô &amp; GBM</strong> · <strong>Monte Carlo Lab</strong>. All paragraphs strictly &lt; 50 words.
+        </p>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap items-center gap-3">
+      <!-- Toolbar Student Details Editor -->
+      <div class="flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700">
+        <label for="input-author-name" class="text-xs text-slate-400 font-mono">Name:</label>
+        <input 
+          id="input-author-name" 
+          type="text" 
+          placeholder="Nordiyana K." 
+          value="Nordiyana K."
+          oninput="syncAuthorDetails('name', this.value)"
+          class="bg-slate-900 border border-slate-600 rounded px-2 py-0.5 text-xs text-amber-300 font-bold focus:outline-none focus:border-amber-400 w-28">
+
+        <label for="input-matric" class="text-xs text-slate-400 font-mono ml-1">Matric:</label>
+        <input 
+          id="input-matric" 
+          type="text" 
+          placeholder="2118492" 
+          value="2118492"
+          oninput="syncAuthorDetails('matric', this.value)"
+          class="bg-slate-900 border border-slate-600 rounded px-2 py-0.5 text-xs text-sky-400 font-mono font-bold focus:outline-none focus:border-sky-400 w-24">
+
+        <label for="input-dept" class="text-xs text-slate-400 font-mono ml-1">Dept:</label>
+        <input 
+          id="input-dept" 
+          type="text" 
+          placeholder="Mathematical Sciences" 
+          value="Dept. of Mathematical Sciences"
+          oninput="syncAuthorDetails('dept', this.value)"
+          class="bg-slate-900 border border-slate-600 rounded px-2 py-0.5 text-xs text-emerald-300 font-bold focus:outline-none focus:border-emerald-400 w-44">
+      </div>
+
+      <!-- Live App Quick Button pointing to custom GitHub Pages deployment -->
+      <a 
+        href="https://diyana-1.github.io/the-quant-cheat-code/" 
+        target="_blank" 
+        class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-600 flex items-center gap-1.5 transition">
+        <span>🔗 GitHub Pages</span>
+      </a>
+
+      <!-- Print Button -->
+      <button 
+        onclick="window.print()" 
+        class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2 cursor-pointer transition transform active:scale-95">
+        <span>🖨️ Print / Save as PDF (A3)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- POSTER CANVAS: A3 PORTRAIT (297mm x 420mm)                                -->
+  <!-- ========================================================================= -->
+  <main class="poster-canvas p-[11mm] text-slate-800 flex flex-col justify-between">
+    
+    <!-- ===================================================================== -->
+    <!-- BLOCK 1: TITLE & TAGLINE (APP NAME, ONE-LINE TAGLINE, NAME & MATRIC)  -->
+    <!-- ===================================================================== -->
+    <section class="border-b-2 border-slate-900 pb-3 relative">
+      <div class="flex items-start justify-between gap-4">
+        <div class="space-y-1 max-w-[70%]">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-md bg-slate-900 text-white text-[11px] font-mono font-bold tracking-wide">
+              John Hull Chapter 14
+            </span>
+          </div>
+
+          <!-- EXACT APP TITLE -->
+          <h1 class="text-[33px] font-extrabold tracking-tight text-slate-950 leading-none pt-1">
+            THE QUANT CHEAT CODE: SIMULATING MARKETS
+          </h1>
+
+          <p class="text-[13.5px] font-semibold text-sky-800 leading-snug">
+            An interactive 4-station laboratory for Wiener, Itô process, GBM, and Monte Carlo simulation with real-time exam-trap diagnostics.
+          </p>
+        </div>
+
+        <!-- STUDENT IDENTIFICATION CARD -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-300 text-right space-y-0.5 min-w-[220px] shrink-0 shadow-2xs">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-1 mb-1">
+            <span class="text-[9px] font-mono uppercase tracking-wider font-extrabold text-slate-500">Student Author &amp; Researcher</span>
+            <span class="text-[9px] font-mono text-emerald-700 font-bold">IIUM Science</span>
+          </div>
+
+          <span 
+            contenteditable="true" 
+            id="poster-author-name"
+            oninput="syncFromPoster('name', this.innerText)"
+            class="text-[15px] font-bold text-slate-950 block px-1"
+            title="Student Author">Nordiyana K.</span>
+
+          <div class="text-[12px] font-mono font-semibold text-indigo-700 flex items-center justify-end gap-1">
+            <span>Matric:</span>
+            <span 
+              contenteditable="true" 
+              id="poster-matric-display"
+              oninput="syncFromPoster('matric', this.innerText)"
+              class="font-bold underline decoration-indigo-400 px-1"
+              title="Matric number">2118492</span>
+          </div>
+
+          <span 
+            contenteditable="true" 
+            id="poster-dept-display"
+            oninput="syncFromPoster('dept', this.innerText)"
+            class="text-[10px] font-medium text-slate-700 block px-1 leading-tight"
+            title="Department">Department of Mathematical Sciences</span>
+
+          <span 
+            contenteditable="true" 
+            id="poster-inst-display"
+            oninput="syncFromPoster('inst', this.innerText)"
+            class="text-[9.5px] font-medium text-slate-500 block px-1"
+            title="Institution">Kulliyyah of Science • IIUM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ROW 1: PROBLEM & LEARNER & SOLUTION ARCHITECTURE                      -->
+    <!-- ===================================================================== -->
+    <section class="grid grid-cols-12 gap-3.5 pt-2">
+      
+      <!-- PROBLEM & LEARNER -->
+      <article class="col-span-5 p-3.5 rounded-2xl bg-rose-50/60 border border-rose-200 flex flex-col justify-between space-y-1.5">
+        <div class="space-y-1">
+          <div class="flex items-center justify-between border-b border-rose-200 pb-1">
+            <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-mono font-extrabold text-[9.5px] uppercase tracking-wider">
+              PROBLEM &amp; LEARNER
+            </span>
+            <span class="text-[10.5px] font-mono font-bold text-rose-800">Target: Mathematical Sciences Students</span>
+          </div>
+          
+          <h2 class="text-[15px] font-extrabold text-slate-900 leading-snug">
+            The Continuous-Time Calculus Wall
+          </h2>
+
+          <p class="text-[12.5px] text-slate-700 leading-relaxed">
+            Mathematical Sciences students hit a severe conceptual roadblock transitioning from discrete algebra to continuous-time stochastic calculus (John Hull, Chapter 14).
+          </p>
+
+          <p class="text-[12.5px] text-slate-700 leading-relaxed">
+            Abstract differentials ($dx, dz, dt$), confusing parameter scalings ($b$ vs $b^2$), memorizing Itô’s curvature without geometric proof, and visualizing Monte Carlo stock path distributions trigger pervasive exam anxiety and costly derivation errors.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1 pt-0.5 text-center font-mono text-[9.5px]">
+          <div class="p-1 rounded bg-white border border-rose-200 text-rose-900 font-bold">Abstract Differentials</div>
+          <div class="p-1 rounded bg-white border border-rose-200 text-rose-900 font-bold">Hull Exam Traps</div>
+          <div class="p-1 rounded bg-white border border-rose-200 text-rose-900 font-bold">Itô Curvature Fear</div>
+        </div>
+      </article>
+
+      <!-- SOLUTION SUMMARY (SHOWING 4 DISTINCT STATIONS) -->
+      <article class="col-span-7 p-3.5 rounded-2xl bg-sky-50/60 border border-sky-200 flex flex-col justify-between space-y-1.5">
+        <div class="space-y-1">
+          <div class="flex items-center justify-between border-b border-sky-200 pb-1">
+            <span class="px-2 py-0.5 rounded bg-sky-600 text-white font-mono font-extrabold text-[9.5px] uppercase tracking-wider">
+              THE SOLUTION
+            </span>
+            <span class="text-[10.5px] font-mono font-bold text-sky-800">4 Dedicated Learning Stations</span>
+          </div>
+          
+          <h2 class="text-[15px] font-extrabold text-slate-900 leading-snug">
+            Transforming Abstract Formulas into Dynamic Discovery
+          </h2>
+
+          <p class="text-[12.5px] text-slate-700 leading-relaxed">
+            The Quant Cheat Code transforms dry textbook derivations into an empathetic, interactive financial laboratory organized into four stations. Learners manipulate parameters with real-time visual feedback, grounding complex stochastic behavior in intuitive mechanics.
+          </p>
+
+          <div class="grid grid-cols-4 gap-1.5 pt-1 text-center font-mono text-[10px]">
+            <div class="p-1 rounded-lg bg-white border border-sky-200 shadow-2xs">
+              <span class="text-[11px] block">🧭</span>
+              <span class="font-bold text-sky-950">1. Wiener</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white border border-indigo-200 shadow-2xs">
+              <span class="text-[11px] block">🌊</span>
+              <span class="font-bold text-indigo-950">2. Itô Process</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white border border-emerald-200 shadow-2xs">
+              <span class="text-[11px] block">🛡️</span>
+              <span class="font-bold text-emerald-950">3. GBM Stocks</span>
+            </div>
+            <div class="p-1 rounded-lg bg-white border border-amber-200 shadow-2xs">
+              <span class="text-[11px] block">🎲</span>
+              <span class="font-bold text-amber-950">4. Monte Carlo</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- REAL APP INTERFACE SHOWCASES (WIENER, GBM, MONTE CARLO)               -->
+    <!-- ===================================================================== -->
+    <section class="space-y-1.5 pt-2">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-1">
+        <h3 class="text-[12.5px] font-extrabold uppercase font-mono tracking-wider text-slate-900 flex items-center gap-1.5">
+          <span>📸</span> Real App Interface Showcases: 3 Interactive Simulation Engines
+        </h3>
+        <span class="text-[10.5px] text-slate-500 font-mono">Faithful Captures of In-App Simulators (Wiener, GBM, Monte Carlo)</span>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        
+        <!-- SHOWCASE 1: WIENER PROCESS TAB -->
+        <div class="p-2.5 rounded-2xl bg-slate-900 text-white flex flex-col justify-between space-y-1.5 border border-slate-700 shadow-md">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1">
+            <span class="text-[10.5px] font-mono font-bold text-sky-400">1. WIENER CONE TAB</span>
+            <span class="text-[9.5px] font-mono text-amber-400">Hull Ex 14.1 ($a=20, b^2=900$)</span>
+          </div>
+
+          <!-- Authentic In-App Interface Screenshot -->
+          <div class="w-full h-32 bg-slate-950 rounded-xl relative overflow-hidden border border-slate-800 flex items-center justify-center p-1">
+            <img 
+              src="./assets/aistudio/image_f06ff64b.png" 
+              alt="Wiener Process Confidence Cone Simulation Screenshot" 
+              class="w-full h-full object-cover object-center rounded-lg" />
+          </div>
+          <div class="flex justify-between items-center text-[8.5px] text-slate-400 font-mono px-0.5">
+            <span class="text-amber-400 font-bold">Drift (x₀ + at)</span>
+            <span class="text-sky-400 font-bold">95% Cone (±1.96b√t)</span>
+            <span class="text-emerald-400 font-bold">Path dz</span>
+          </div>
+
+          <p class="text-[11.5px] text-slate-300 leading-snug">
+            Visualizes $dx = a\,dt + b\,dz$ with Hull cash drift $x_0 + at$, showing stochastic path fluctuations bounded by the widening $\pm 1.96b\sqrt{t}$ 95% Gaussian confidence cone around the steady baseline trend.
+          </p>
+        </div>
+
+        <!-- SHOWCASE 2: GBM STOCKS TAB -->
+        <div class="p-2.5 rounded-2xl bg-slate-900 text-white flex flex-col justify-between space-y-1.5 border border-slate-700 shadow-md">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1">
+            <span class="text-[10.5px] font-mono font-bold text-emerald-400">2. GBM STOCK FLOOR TAB</span>
+            <span class="text-[9.5px] font-mono text-sky-400">$S(t) = S_0 e^n \gt 0$</span>
+          </div>
+
+          <!-- Authentic In-App Interface Screenshot -->
+          <div class="w-full h-32 bg-slate-950 rounded-xl relative overflow-hidden border border-slate-800 flex items-center justify-center p-1">
+            <img 
+              src="./assets/aistudio/image_16d04c5f.png" 
+              alt="GBM Stock Zero-Floor Solvency Simulation Screenshot" 
+              class="w-full h-full object-cover object-center rounded-lg" />
+          </div>
+          <div class="flex justify-between items-center text-[8.5px] text-slate-400 font-mono px-0.5">
+            <span class="text-emerald-400 font-bold">dS = μS dt + σS dz</span>
+            <span class="text-amber-400 font-bold">Zero Floor S = $0</span>
+            <span class="text-sky-400 font-bold">Solvent Always</span>
+          </div>
+
+          <p class="text-[11.5px] text-slate-300 leading-snug">
+            Demonstrates proportional asset scaling $dS = \mu S\,dt + \sigma S\,dz$, illustrating how shareholder limited liability naturally cushions price paths to guarantee stocks remain strictly positive above the zero-floor bankruptcy limit ($S > 0$).
+          </p>
+        </div>
+
+        <!-- SHOWCASE 3: MONTE CARLO TAB -->
+        <div class="p-2.5 rounded-2xl bg-slate-900 text-white flex flex-col justify-between space-y-1.5 border border-slate-700 shadow-md">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-1">
+            <span class="text-[10.5px] font-mono font-bold text-amber-400">3. MONTE CARLO TAB</span>
+            <span class="text-[9.5px] font-mono text-slate-400">$N=100+$ Multi-Paths</span>
+          </div>
+
+          <!-- Authentic In-App Interface Screenshot -->
+          <div class="w-full h-32 bg-slate-950 rounded-xl relative overflow-hidden border border-slate-800 flex items-center justify-center p-1">
+            <img 
+              src="./assets/aistudio/image_869fbc42.png" 
+              alt="Monte Carlo Multi-Path Simulation Lab Screenshot" 
+              class="w-full h-full object-cover object-center rounded-lg" />
+          </div>
+          <div class="flex justify-between items-center text-[8.5px] text-slate-400 font-mono px-0.5">
+            <span class="text-sky-400 font-bold">1-Year Trajectories</span>
+            <span class="text-amber-400 font-bold">Dashed Drift Curve</span>
+            <span class="text-emerald-400 font-bold">Terminal Fan</span>
+          </div>
+
+          <p class="text-[11.5px] text-slate-300 leading-snug">
+            Simulates multi-path market trajectories across a 1-year horizon starting at $S_0 = \$100$, displaying how random paths fan out around expected drift to form an empirical log-normal terminal price distribution.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ROW 3: MATHS & NOVELTY                                                -->
+    <!-- ===================================================================== -->
+    <section class="p-3.5 rounded-2xl bg-indigo-50/50 border border-indigo-200 space-y-2 pt-2">
+      <div class="flex items-center justify-between border-b border-indigo-200 pb-1">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-indigo-700 text-white font-mono font-extrabold text-[9.5px] uppercase tracking-wider">
+            MATHS &amp; NOVELTY
+          </span>
+          <h2 class="text-[14.5px] font-extrabold text-slate-900">
+            The Continuous-Time Mathematical Backbone
+          </h2>
+        </div>
+        <span class="text-[10.5px] font-mono font-bold text-indigo-800">John Hull 14.1 &ndash; 14.6</span>
+      </div>
+
+      <div class="grid grid-cols-12 gap-3 items-center">
+        
+        <!-- The 3 Core Equations -->
+        <div class="col-span-8 grid grid-cols-3 gap-2 text-center font-mono">
+          
+          <!-- Equation 1: Generalised Wiener -->
+          <div class="p-2.5 rounded-xl bg-white border border-indigo-200 shadow-2xs space-y-0.5">
+            <span class="text-[9.5px] uppercase tracking-wider font-extrabold text-sky-800 font-sans block">Generalised Wiener</span>
+            <div class="text-[13px] font-bold text-slate-900 py-0.5">$$dx = a\,dt + b\,dz$$</div>
+            <p class="text-[10.5px] text-slate-600 font-sans leading-tight">
+              Powers our interactive confidence cone and Hull cash-flow solver ($x_0 + at$), computing real-time Gaussian probabilities for volatility $b$ versus variance rate $b^2$.
+            </p>
+          </div>
+
+          <!-- Equation 2: Itô Process & GBM -->
+          <div class="p-2.5 rounded-xl bg-white border border-indigo-200 shadow-2xs space-y-0.5">
+            <span class="text-[9.5px] uppercase tracking-wider font-extrabold text-indigo-700 font-sans block">Itô Process &amp; GBM</span>
+            <div class="text-[12.5px] font-bold text-indigo-950 py-0.5">
+              $$(dz)^2 = dt, \quad dS = \mu S\,dt + \sigma S\,dz$$
+            </div>
+            <p class="text-[10.5px] text-indigo-950 font-sans leading-tight">
+              Drives our stochastic multiplication bridge ($(dz)^2 = dt$) and stock solvency engine, proving why proportional returns preserve shareholder limited liability ($S > 0$) without negative overdrafts.
+            </p>
+          </div>
+
+          <!-- Equation 3: Monte Carlo Lab -->
+          <div class="p-2.5 rounded-xl bg-white border border-indigo-200 shadow-2xs space-y-0.5">
+            <span class="text-[9.5px] uppercase tracking-wider font-extrabold text-amber-700 font-sans block">Monte Carlo Lab</span>
+            <div class="text-[12px] font-bold text-amber-950 py-0.5">
+              $$\hat{C} = e^{-rT} \frac{1}{N}\sum \max(S_T - K, 0)$$
+            </div>
+            <p class="text-[10.5px] text-amber-950 font-sans leading-tight">
+              Runs our live 252-day multi-path canvas engine ($N=60-100+$ paths), generating empirical log-normal terminal distributions to price European call options in real time.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Novelty & Differentiation -->
+        <div class="col-span-4 p-3 bg-white rounded-xl border border-indigo-200 space-y-1 shadow-2xs">
+          <span class="text-[9.5px] font-mono uppercase font-bold text-indigo-800 tracking-wider block">Why Our App Is Novel</span>
+          <p class="text-[11.5px] text-slate-700 leading-relaxed">
+            Unlike static paper derivations, our platform pairs every theorem with dynamic parameter sliders, active exam-trap checkers (e.g. $b$ vs $b^2$), and a 12-question diagnostic mastery loop linking directly back into theory.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ROW 4: QR CODE & LIVE APP ACCESS (BLOCK 5)                            -->
+    <!-- ===================================================================== -->
+    <footer class="p-3.5 rounded-2xl bg-slate-900 text-white flex items-center justify-between gap-5 border border-slate-800 shadow-lg">
+      
+      <div class="flex items-center gap-4">
+        <!-- Live App High-Resolution QR Code pointing to custom GitHub Pages -->
+        <div class="w-22 h-22 bg-white p-1 rounded-xl border-2 border-amber-400 shrink-0 shadow-md flex items-center justify-center">
+          <img 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=4&data=https%3A%2F%2Fdiyana-1.github.io%2Fthe-quant-cheat-code%2F" 
+            alt="Scan QR Code to Launch The Quant Cheat Code" 
+            class="w-full h-full object-contain">
+        </div>
+
+        <div class="space-y-0.5">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-mono font-extrabold text-[9.5px] uppercase tracking-wider">
+              LIVE QR CODE
+            </span>
+            <span class="text-[10.5px] font-mono text-emerald-400 font-bold">100% OPERATIONAL LINK</span>
+          </div>
+
+          <h3 class="text-[16px] font-extrabold text-white tracking-tight">
+            Scan with Your Phone to Launch The Quant Cheat Code
+          </h3>
+
+          <p class="text-[11.5px] text-slate-300 max-w-lg leading-snug">
+            Experience real-time Brownian motion simulations, interactive slider controls, and diagnostic quizzes directly in any browser with zero installation.
+          </p>
+
+          <div class="text-[10.5px] font-mono text-sky-400 select-all font-bold">
+            https://diyana-1.github.io/the-quant-cheat-code/
+          </div>
+        </div>
+      </div>
+
+      <!-- Exhibition Sign-Off Stamp -->
+      <div class="border-l border-slate-700 pl-4 text-right shrink-0 space-y-0.5">
+        <span class="text-[9.5px] font-mono uppercase tracking-widest text-slate-400 block font-bold">Final Innovation Deliverable</span>
+        <span class="text-[14px] font-bold text-white block" id="footer-author-name">Nordiyana K.</span>
+        <span class="text-[11.5px] font-mono text-amber-400 font-bold block" id="footer-matric-display">Matric: 2118492</span>
+        <span class="text-[9.5px] text-slate-400 block" id="footer-dept-display">Dept. of Mathematical Sciences • IIUM</span>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <script>
+    // LocalStorage Key for Author Details
+    const STORAGE_KEY = 'quant_poster_author_details';
+
+    // Synchronize author details across poster canvas, footer stamp, and inputs
+    function syncAuthorDetails(field, value) {
+      const val = value.trim();
+      
+      if (field === 'name') {
+        const display = val || 'Nordiyana K.';
+        const el1 = document.getElementById('poster-author-name');
+        const el2 = document.getElementById('footer-author-name');
+        if (el1 && el1.innerText !== display) el1.innerText = display;
+        if (el2) el2.innerText = display;
+      }
+      
+      if (field === 'matric') {
+        const display = val || '2118492';
+        const el1 = document.getElementById('poster-matric-display');
+        const el2 = document.getElementById('footer-matric-display');
+        if (el1 && el1.innerText !== display) el1.innerText = display;
+        if (el2) el2.innerText = 'Matric: ' + display;
+      }
+
+      if (field === 'dept') {
+        const display = val || 'Department of Mathematical Sciences';
+        const el1 = document.getElementById('poster-dept-display');
+        const el2 = document.getElementById('footer-dept-display');
+        if (el1 && el1.innerText !== display) el1.innerText = display;
+        if (el2) el2.innerText = display + ' • IIUM';
+      }
+
+      saveAuthorState();
+    }
+
+    // Bidirectional sync when editing directly on poster canvas via contenteditable
+    function syncFromPoster(field, text) {
+      const val = text.trim();
+      if (field === 'name') {
+        const input = document.getElementById('input-author-name');
+        const footer = document.getElementById('footer-author-name');
+        if (input) input.value = val;
+        if (footer) footer.innerText = val || 'Nordiyana K.';
+      }
+      if (field === 'matric') {
+        const input = document.getElementById('input-matric');
+        const footer = document.getElementById('footer-matric-display');
+        if (input) input.value = val;
+        if (footer) footer.innerText = 'Matric: ' + (val || '2118492');
+      }
+      if (field === 'dept') {
+        const input = document.getElementById('input-dept');
+        const footer = document.getElementById('footer-dept-display');
+        if (input) input.value = val;
+        if (footer) footer.innerText = (val || 'Dept. of Mathematical Sciences') + ' • IIUM';
+      }
+      saveAuthorState();
+    }
+
+    function saveAuthorState() {
+      try {
+        const state = {
+          name: document.getElementById('poster-author-name')?.innerText || 'Nordiyana K.',
+          matric: document.getElementById('poster-matric-display')?.innerText || '2118492',
+          dept: document.getElementById('poster-dept-display')?.innerText || 'Department of Mathematical Sciences',
+          inst: document.getElementById('poster-inst-display')?.innerText || 'Kulliyyah of Science • IIUM'
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        // LocalStorage fallback
+      }
+    }
+
+    function loadSavedAuthorState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.name) {
+            syncAuthorDetails('name', parsed.name);
+            const input = document.getElementById('input-author-name');
+            if (input) input.value = parsed.name;
+          }
+          if (parsed.matric) {
+            syncAuthorDetails('matric', parsed.matric);
+            const input = document.getElementById('input-matric');
+            if (input) input.value = parsed.matric;
+          }
+          if (parsed.dept) {
+            syncAuthorDetails('dept', parsed.dept);
+            const input = document.getElementById('input-dept');
+            if (input) input.value = parsed.dept;
+          }
+        }
+      } catch (e) {}
+    }
+
+    window.addEventListener('DOMContentLoaded', loadSavedAuthorState);
+  </script>
+
+</body>
+</html>
